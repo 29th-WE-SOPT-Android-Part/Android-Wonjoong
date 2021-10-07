@@ -3,4 +3,5 @@
     <string name="sopthub">SOPTHub</string>
     <string name="login">로그인</string>
     <string name="register">회원가입</string>
+    <string name="done_register">회원가입 완료</string>
 </resources>

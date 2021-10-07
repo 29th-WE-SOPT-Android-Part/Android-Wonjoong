@@ -3,5 +3,6 @@
     <declare-styleable name="EditTextWithTitle">
         <attr name="title" format="reference|string" />
         <attr name="hint" format="reference|string" />
+        <attr name="isPassword" format="reference|boolean" />
     </declare-styleable>
 </resources>

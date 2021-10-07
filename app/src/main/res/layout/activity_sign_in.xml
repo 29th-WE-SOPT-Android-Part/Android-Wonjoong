@@ -41,7 +41,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_sopt_hub" />
 
         <com.wonjoong.android.sopthub.ui.customview.EditTextWithTitle
-            android:id="@+id/et_title"
+            android:id="@+id/et_id"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
@@ -58,9 +58,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             app:hint="비밀번호를 입력해주세요"
-            app:layout_constraintEnd_toEndOf="@id/et_title"
-            app:layout_constraintStart_toStartOf="@id/et_title"
-            app:layout_constraintTop_toBottomOf="@id/et_title"
+            app:isPassword="true"
+            app:layout_constraintEnd_toEndOf="@id/et_id"
+            app:layout_constraintStart_toStartOf="@id/et_id"
+            app:layout_constraintTop_toBottomOf="@id/et_id"
             app:title="비밀번호" />
 
         <Button
