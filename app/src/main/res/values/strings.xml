@@ -7,4 +7,8 @@
     <string name="welcome_id">%s님 환영합니다</string>
     <string name="login_fail">로그인 실패</string>
     <string name="not_all_filled">입력되지 않은 정보가 있습니다</string>
+    <string name="wonjoong_profile_picture">WonJoong Profile Picture</string>
+    <string name="name">이름</string>
+    <string name="age">나이</string>
+    <string name="mbti">MBTI</string>
 </resources>
