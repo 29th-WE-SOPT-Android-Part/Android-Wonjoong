@@ -36,7 +36,7 @@ class EditTextWithTitle @JvmOverloads constructor(
                     if (isPassword) etUserInput.transformationMethod =
                         PasswordTransformationMethod.getInstance()
                 }
-                recycle()
+                //recycle()
             }
         }
     }
@@ -45,5 +45,7 @@ class EditTextWithTitle @JvmOverloads constructor(
     fun setText(text: String) {
         binding.etUserInput.setText(text)
     }
+
+    fun isNotEmpty() = getText().isNotEmpty()
 
 }

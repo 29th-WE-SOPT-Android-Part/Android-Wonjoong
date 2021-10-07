@@ -7,8 +7,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ActivitySignInBinding
+import com.wonjoong.android.sopthub.ui.home.HomeActivity
 import com.wonjoong.android.sopthub.ui.signup.SignUpActivity
 import com.wonjoong.android.sopthub.util.BaseViewUtil
+import com.wonjoong.android.sopthub.util.toast
 
 class SignInActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
@@ -22,6 +24,7 @@ class SignInActivity :
         initViewModel()
         setSignUpActivityResult()
         initRegisterBtn()
+        initLoginBtn()
     }
 
     private fun setSignUpActivityResult() {
@@ -47,6 +50,19 @@ class SignInActivity :
         binding.btnRegister.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             getResultText.launch(intent)
+        }
+    }
+
+    private fun initLoginBtn() = with(binding) {
+        btnLogin.setOnClickListener {
+            if (etId.getText().isNotEmpty() && etPassword.getText().isNotEmpty()) {
+                toast(String.format(resources.getString(R.string.welcome_id), etId.getText()))
+                val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                toast(getString(R.string.login_fail))
+            }
         }
     }
 
