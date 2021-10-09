@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.wonjoong.android.sopthub.ui.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_sopt_hub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="@string/sopthub"
+            android:textColor="@color/sopt_pink"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_my_image"
+            bind="@{viewModel.profileImage}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginTop="28dp"
+            android:contentDescription="@string/wonjoong_profile_picture"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_sopt_hub" />
+
+        <TextView
+            android:id="@+id/tv_category_name"
+            style="@style/ProfileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/name"
+            app:layout_constraintStart_toStartOf="@id/iv_my_image"
+            app:layout_constraintTop_toBottomOf="@id/iv_my_image" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/ProfileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="@{viewModel.name}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_category_name"
+            app:layout_constraintStart_toEndOf="@id/tv_category_name"
+            app:layout_constraintTop_toTopOf="@id/tv_category_name"
+            tools:text="이원중" />
+
+        <TextView
+            android:id="@+id/tv_category_age"
+            style="@style/ProfileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/age"
+            app:layout_constraintStart_toStartOf="@id/iv_my_image"
+            app:layout_constraintTop_toBottomOf="@id/tv_category_name" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            style="@style/ProfileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.age}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_category_age"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toTopOf="@id/tv_category_age"
+            tools:text="25" />
+
+        <TextView
+            android:id="@+id/tv_category_mbti"
+            style="@style/ProfileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/mbti"
+            app:layout_constraintStart_toStartOf="@id/tv_category_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_category_age" />
+
+        <TextView
+            android:id="@+id/tv_mbti"
+            style="@style/ProfileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.mbti}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_category_mbti"
+            app:layout_constraintStart_toStartOf="@id/tv_age"
+            app:layout_constraintTop_toTopOf="@id/tv_category_mbti"
+            tools:text="INFP" />
+
+        <ImageView
+            android:id="@+id/iv_github"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/githubimage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
+
+        <ScrollView
+            android:id="@+id/sv_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_github">
+
+            <TextView
+                android:id="@+id/tv_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:text="@{viewModel.introduce}" />
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
