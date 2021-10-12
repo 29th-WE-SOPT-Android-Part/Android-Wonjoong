@@ -11,6 +11,8 @@ object Versions {
     const val kotlin = "1.5.21"
     const val appcompat = "1.3.1"
     const val junit = "4.13.2"
+    const val activity = "1.3.1"
+    const val fragment = "1.4.0-alpha10"
 }
 
 object Dep {
@@ -19,6 +21,8 @@ object Dep {
         const val core = "androidx.core:core-ktx:1.6.0"
         const val material = "com.google.android.material:material:1.4.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.1"
+        const val activityKtx = "androidx.activity:activity-ktx:${Versions.activity}"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     }
 
     object Test {

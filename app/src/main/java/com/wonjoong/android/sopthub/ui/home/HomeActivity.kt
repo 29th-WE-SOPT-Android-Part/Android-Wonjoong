@@ -3,7 +3,7 @@ package com.wonjoong.android.sopthub.ui.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ActivityHomeBinding
 import com.wonjoong.android.sopthub.util.BaseViewUtil
@@ -11,7 +11,7 @@ import com.wonjoong.android.sopthub.util.BaseViewUtil
 class HomeActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,6 @@ class HomeActivity :
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }

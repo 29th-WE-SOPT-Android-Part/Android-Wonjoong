@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ActivitySignInBinding
 import com.wonjoong.android.sopthub.ui.home.HomeActivity
+import com.wonjoong.android.sopthub.ui.home.HomeViewModel
 import com.wonjoong.android.sopthub.ui.signup.SignUpActivity
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.toast
@@ -18,7 +20,7 @@ class SignInActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
 
     private val TAG = "SIGN_IN_ACTIVITY"
-    private lateinit var viewModel: SignInViewModel
+    private val viewModel: SignInViewModel by viewModels()
     private lateinit var getResultText: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +33,6 @@ class SignInActivity :
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(SignInViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
