@@ -3,7 +3,7 @@
     package="com.wonjoong.android.sopthub">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_main_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_main_logo_round"
