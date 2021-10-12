@@ -7,11 +7,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ActivitySignInBinding
 import com.wonjoong.android.sopthub.ui.home.HomeActivity
-import com.wonjoong.android.sopthub.ui.home.HomeViewModel
 import com.wonjoong.android.sopthub.ui.signup.SignUpActivity
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.toast
@@ -50,8 +48,8 @@ class SignInActivity :
             if (result.resultCode == RESULT_OK) {
                 val id = result.data?.getStringExtra(NAME_INTENT_KEY)
                 val password = result.data?.getStringExtra(PASSWORD_INTENT_KEY)
-                binding.etId.setText(id ?: "")
-                binding.etPassword.setText(password ?: "")
+                binding.etId.text = id ?: ""
+                binding.etPassword.text = password ?: ""
             }
         }
     }
@@ -65,8 +63,8 @@ class SignInActivity :
 
     private fun initLoginBtn() = with(binding) {
         btnLogin.setOnClickListener {
-            if (etId.getText().isNotEmpty() && etPassword.getText().isNotEmpty()) {
-                toast(String.format(resources.getString(R.string.welcome_id), etId.getText()))
+            if (etId.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
+                toast(String.format(resources.getString(R.string.welcome_id), etId.text))
                 val intent = Intent(this@SignInActivity, HomeActivity::class.java)
                 startActivity(intent)
                 finish()

@@ -5,13 +5,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ActivitySignUpBinding
 import com.wonjoong.android.sopthub.ui.signin.SignInActivity
 import com.wonjoong.android.sopthub.ui.signin.SignInActivity.Companion.NAME_INTENT_KEY
 import com.wonjoong.android.sopthub.ui.signin.SignInActivity.Companion.PASSWORD_INTENT_KEY
-import com.wonjoong.android.sopthub.ui.signin.SignInViewModel
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.toast
 
@@ -40,8 +38,8 @@ class SignUpActivity :
         binding.btnDoneRegister.setOnClickListener {
             if (isAllEditTextNotEmpty()) {
                 val intent = Intent(this@SignUpActivity, SignInActivity::class.java).apply {
-                    putExtra(NAME_INTENT_KEY, binding.etId.getText())
-                    putExtra(PASSWORD_INTENT_KEY, binding.etPassword.getText())
+                    putExtra(NAME_INTENT_KEY, binding.etId.text)
+                    putExtra(PASSWORD_INTENT_KEY, binding.etPassword.text)
                 }
                 setResult(RESULT_OK, intent)
                 finish()

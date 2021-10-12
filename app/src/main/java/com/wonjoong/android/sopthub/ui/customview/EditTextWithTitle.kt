@@ -1,10 +1,8 @@
 package com.wonjoong.android.sopthub.ui.customview
 
 import android.content.Context
-import android.text.InputType
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
@@ -24,6 +22,12 @@ class EditTextWithTitle @JvmOverloads constructor(
         true
     )
 
+    @get:JvmName("text")
+    @set:JvmName("text")
+    var text: String
+        get() = getText()
+        set(value) = setText(value)
+
     init {
         attrs?.let {
             context.obtainStyledAttributes(attrs, R.styleable.EditTextWithTitle).apply {
@@ -41,11 +45,10 @@ class EditTextWithTitle @JvmOverloads constructor(
         }
     }
 
-    fun getText() = binding.etUserInput.text.toString()
-    fun setText(text: String) {
+    private fun getText() = binding.etUserInput.text.toString()
+    private fun setText(text: String) {
         binding.etUserInput.setText(text)
     }
 
     fun isNotEmpty() = getText().isNotEmpty()
-
 }
