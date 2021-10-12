@@ -7,7 +7,7 @@ object Apps {
 }
 
 object Versions {
-    const val gradle = "4.2.0"
+    const val gradle = "7.0.0"
     const val kotlin = "1.5.21"
     const val appcompat = "1.3.1"
     const val junit = "4.13.2"
