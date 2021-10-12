@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 sealed class BaseViewUtil {
     abstract class BaseAppCompatActivity<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) :
         AppCompatActivity() {
-        lateinit var binding: T
+        protected lateinit var binding: T
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             binding = DataBindingUtil.setContentView(this, layoutRes)
@@ -26,7 +26,7 @@ sealed class BaseViewUtil {
     abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) : Fragment() {
 
         private var _binding: T? = null
-        val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
+        protected val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
 
         override fun onCreateView(
             inflater: LayoutInflater,
