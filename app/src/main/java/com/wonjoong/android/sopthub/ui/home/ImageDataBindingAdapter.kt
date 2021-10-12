@@ -7,7 +7,7 @@ object ImageDataBindingAdapter {
 
     @BindingAdapter("bind")
     @JvmStatic
-    fun setImageViewResource(imageView: ImageView, resource: Int) {
-        imageView.setImageResource(resource)
+    fun ImageView.setImageViewResource(resource: Int) {
+        setImageResource(resource)
     }
 }
