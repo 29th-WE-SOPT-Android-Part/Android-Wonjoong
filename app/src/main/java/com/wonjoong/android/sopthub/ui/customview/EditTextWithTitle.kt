@@ -37,6 +37,7 @@ class EditTextWithTitle @JvmOverloads constructor(
                 with(binding) {
                     tvTitle.text = title
                     etUserInput.hint = hint
+                    etUserInput.maxLines = 1
                     if (isPassword) etUserInput.transformationMethod =
                         PasswordTransformationMethod.getInstance()
                 }
