@@ -11,7 +11,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
 sealed class BaseViewUtil {
-    open class BaseAppCompatActivity<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) :
+    abstract class BaseAppCompatActivity<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) :
         AppCompatActivity() {
         lateinit var binding: T
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,22 +23,24 @@ sealed class BaseViewUtil {
         open fun T.onCreate() = Unit
     }
 
-    open class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) : Fragment() {
+    abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) : Fragment() {
 
-        lateinit var binding: T
+        private var _binding: T? = null
+        val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
 
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
-            binding.onCreateView()
-            binding.onViewCreated()
+            _binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+            binding.lifecycleOwner = viewLifecycleOwner
             return binding.root
         }
 
-        open fun T.onCreateView() = Unit
-        open fun T.onViewCreated() = Unit
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
     }
 }
