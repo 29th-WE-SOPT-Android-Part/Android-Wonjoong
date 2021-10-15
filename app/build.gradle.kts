@@ -5,16 +5,16 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Apps.compileSdk)
-
     defaultConfig {
-        minSdkVersion(Apps.minSdk)
-        targetSdkVersion(Apps.targetSdk)
+        compileSdk = Apps.compileSdk
+        minSdk = Apps.minSdk
+        targetSdk = Apps.targetSdk
         versionCode = Apps.versionCode
         versionName = Apps.versionName
         multiDexEnabled = true
         setProperty("archivesBaseName", "$applicationId-v$versionName($versionCode)")
-        resConfigs("en")
+        resourceConfigurations += "en"
+        resourceConfigurations += "kr"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
