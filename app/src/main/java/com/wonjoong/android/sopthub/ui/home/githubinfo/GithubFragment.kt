@@ -20,6 +20,7 @@ class GithubFragment :
     private lateinit var fragmentType: String
     private val viewModel: GithubViewModel by viewModels()
     private lateinit var followerAdapter: FollowerAdapter
+    private lateinit var repositoryAdapter: FollowerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setViewModel()
