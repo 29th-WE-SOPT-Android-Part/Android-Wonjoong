@@ -11,8 +11,8 @@
         android:theme="@style/Theme.SoptHub">
         <activity
             android:name=".ui.signin.SignInActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.signup.SignUpActivity" />
-        <activity android:name=".ui.home.HomeActivity"/>
+        <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.detail.ItemDetailActivity" />
     </application>
 
 </manifest>

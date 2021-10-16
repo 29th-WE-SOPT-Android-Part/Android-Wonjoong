@@ -1,5 +1,6 @@
 package com.wonjoong.android.sopthub.ui.home.githubinfo
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.FragmentGithubInfoBinding
+import com.wonjoong.android.sopthub.ui.detail.ItemDetailActivity
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.FOLLOWER
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.FRAGMENT_TYPE
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.REPOSITORY
@@ -37,7 +39,7 @@ class GithubFragment :
 
     private fun setFragmentWithFragmentType() {
         followerAdapter = GithubAdapter(this::moveToPersonDetail)
-        repositoryAdapter = GithubAdapter(this::moveToPersonDetail)
+        repositoryAdapter = GithubAdapter(null) // 클릭이 되지 않도록 null을 넣어준다
         when (fragmentType) {
             FOLLOWER -> {
                 val linearlayoutManager = LinearLayoutManager(requireContext())
@@ -55,6 +57,13 @@ class GithubFragment :
     private fun moveToPersonDetail(name: String, description: String) {
         // TODO
         requireContext().toast("이름 : $name, 설명 : $description")
+        val intent = Intent(requireContext(), ItemDetailActivity::class.java)
+        val bundle = Bundle().apply {
+            putString("name", name)
+            putString("description", description)
+        }
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     private fun observeRecyclerViewItem() {

@@ -9,7 +9,7 @@ import com.wonjoong.android.sopthub.databinding.ItemGithubBinding
 import com.wonjoong.android.sopthub.ui.home.githubinfo.data.GithubData
 
 class GithubAdapter(
-    private val onClick: (String, String) -> Unit
+    private val onClick: ((String, String) -> Unit)?
 ) : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {
     private val itemList = mutableListOf<GithubData>()
 
@@ -39,11 +39,11 @@ class GithubAdapter(
         private val binding: ItemGithubBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.root.setOnClickListener {
-                onClick.invoke(
-                    itemList[adapterPosition].name,
-                    itemList[adapterPosition].description,
-                )
+            if (onClick != null) {
+                binding.root.setOnClickListener {
+                    val currentItem = itemList[adapterPosition]
+                    onClick.invoke(currentItem.name, currentItem.description)
+                }
             }
         }
 
