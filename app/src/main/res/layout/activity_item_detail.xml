@@ -5,9 +5,6 @@
 
     <data>
 
-        <variable
-            name="viewModel"
-            type="com.wonjoong.android.sopthub.ui.detail.ItemDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
