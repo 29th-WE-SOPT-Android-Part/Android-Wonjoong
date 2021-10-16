@@ -31,9 +31,13 @@ class GithubAdapter(
     fun setItemList(newItemList: List<GithubData>) {
         itemList.clear()
         itemList.addAll(newItemList)
-        notifyDataSetChanged()
+        notifyDataSetChanged() // TODO diff util로 개선
     }
 
+    fun removeItemAt(position: Int) {
+        itemList.removeAt(position)
+        notifyDataSetChanged() // TODO diff util로 개선
+    }
 
     inner class GithubViewHolder(
         private val binding: ItemGithubBinding
