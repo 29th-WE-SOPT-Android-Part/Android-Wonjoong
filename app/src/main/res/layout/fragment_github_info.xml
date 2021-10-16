@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.wonjoong.android.sopthub.ui.home.githubinfo.GithubViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -13,4 +13,5 @@
     <string name="mbti">MBTI</string>
     <string name="home_follower_list">팔로워\n목록</string>
     <string name="home_repo_list">레포지토리\n목록</string>
+    <string name="item_github_user_image">User Image</string>
 </resources>
