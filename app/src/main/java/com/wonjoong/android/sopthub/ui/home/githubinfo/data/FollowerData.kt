@@ -1,4 +1,4 @@
-package com.wonjoong.android.sopthub.ui.home.githubinfo
+package com.wonjoong.android.sopthub.ui.home.githubinfo.data
 
 import androidx.annotation.DrawableRes
 

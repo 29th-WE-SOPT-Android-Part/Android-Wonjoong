@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.wonjoong.android.sopthub.ui.home.githubinfo.FollowerData" />
+            type="com.wonjoong.android.sopthub.ui.home.githubinfo.data.FollowerData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

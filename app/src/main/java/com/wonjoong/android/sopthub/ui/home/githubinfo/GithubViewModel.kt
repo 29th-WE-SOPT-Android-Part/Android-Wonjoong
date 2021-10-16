@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wonjoong.android.sopthub.R
+import com.wonjoong.android.sopthub.ui.home.githubinfo.data.FollowerData
 import com.wonjoong.android.sopthub.util.notifyObserver
 
 class GithubViewModel : ViewModel() {

@@ -1,4 +1,4 @@
-package com.wonjoong.android.sopthub.ui.home.githubinfo
+package com.wonjoong.android.sopthub.ui.home.githubinfo.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ItemFollowerInfoBinding
+import com.wonjoong.android.sopthub.ui.home.githubinfo.data.FollowerData
 
 class FollowerAdapter(
     private val onClick: (String, String) -> Unit

@@ -2,7 +2,6 @@ package com.wonjoong.android.sopthub.ui.home.githubinfo
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +10,7 @@ import com.wonjoong.android.sopthub.databinding.FragmentGithubInfoBinding
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.FOLLOWER
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.FRAGMENT_TYPE
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.REPOSITORY
+import com.wonjoong.android.sopthub.ui.home.githubinfo.adapter.FollowerAdapter
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.toast
 
