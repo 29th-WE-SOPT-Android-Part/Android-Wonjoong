@@ -4,15 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wonjoong.android.sopthub.R
-import com.wonjoong.android.sopthub.ui.home.githubinfo.data.FollowerData
-import com.wonjoong.android.sopthub.ui.home.githubinfo.data.RepositoryData
+import com.wonjoong.android.sopthub.ui.home.githubinfo.data.GithubData
 import com.wonjoong.android.sopthub.util.notifyObserver
 
 class GithubViewModel : ViewModel() {
-    private val _followerList = MutableLiveData<MutableList<FollowerData>>(mutableListOf())
-    val followerList: LiveData<MutableList<FollowerData>> get() = _followerList
-    private val _repositoryList = MutableLiveData<MutableList<RepositoryData>>(mutableListOf())
-    val repositoryList: LiveData<MutableList<RepositoryData>> get() = _repositoryList
+    private val _followerList = MutableLiveData<MutableList<GithubData>>(mutableListOf())
+    val followerList: LiveData<MutableList<GithubData>> get() = _followerList
+    private val _repositoryList = MutableLiveData<MutableList<GithubData>>(mutableListOf())
+    val repositoryList: LiveData<MutableList<GithubData>> get() = _repositoryList
 
     init {
         getFollowerList()
@@ -22,11 +21,42 @@ class GithubViewModel : ViewModel() {
     private fun getFollowerList() {
         _followerList.value?.addAll(
             listOf(
-                FollowerData(R.drawable.ic_launcher_background, "문다빈", "안드로이드 어머니"),
-                FollowerData(R.drawable.ic_launcher_background, "다빈", "안드 어니"),
-                FollowerData(R.drawable.ic_launcher_background, "빈", "안드로드 어머"),
-                FollowerData(R.drawable.ic_launcher_background, "문다", "안드로드 어니"),
-                FollowerData(R.drawable.ic_launcher_background, "문빈", "안로이드 머니"),
+                GithubData(
+                    "문다빈",
+                    "안드로이드의 어머니",
+                    R.drawable.ic_launcher_background,
+                    true
+                ),
+                GithubData(
+                    "문빈",
+                    "안드로이드의 어니",
+                    R.drawable.ic_launcher_background,
+                    true
+                ),
+                GithubData(
+                    "다빈",
+                    "안드로이드의 어머",
+                    R.drawable.ic_launcher_background,
+                    true
+                ),
+                GithubData(
+                    "빈",
+                    "ios의 어머니",
+                    R.drawable.ic_launcher_background,
+                    true
+                ),
+                GithubData(
+                    "빈",
+                    "ios의 어머니",
+                    R.drawable.ic_launcher_background,
+                    true
+                ),
+                GithubData(
+                    "빈",
+                    "ios의 어머니",
+                    R.drawable.ic_launcher_background,
+                    true
+                )
             )
         )
         _followerList.notifyObserver()
@@ -35,14 +65,12 @@ class GithubViewModel : ViewModel() {
     private fun getRepositoryList() {
         _repositoryList.value?.addAll(
             listOf(
-                RepositoryData("안드로이드 과제 레포지토리", "재밌다"),
-                RepositoryData("ios", "재밌다"),
-                RepositoryData("서버", "재밌다 재밌다 재밌다 재밌다 재밌다 재밌다 재밌다 재밌다"),
-                RepositoryData("기획", "재밌다 재밌다 재밌다 재밌다 재밌다"),
-                RepositoryData("디자인", "재밌다".repeat(100)),
+                GithubData("안드로이드 과제", "재밌따."),
+                GithubData("ios 과제", "재밌어.".repeat(20)),
+                GithubData("솝트 과제", "재밌군."),
+                GithubData("디자인 과제", "재밌네."),
             )
         )
         _repositoryList.notifyObserver()
     }
-
 }

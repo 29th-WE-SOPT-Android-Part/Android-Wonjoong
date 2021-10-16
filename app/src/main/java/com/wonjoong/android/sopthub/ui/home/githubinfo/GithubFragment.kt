@@ -1,7 +1,6 @@
 package com.wonjoong.android.sopthub.ui.home.githubinfo
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,8 +10,7 @@ import com.wonjoong.android.sopthub.databinding.FragmentGithubInfoBinding
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.FOLLOWER
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.FRAGMENT_TYPE
 import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.REPOSITORY
-import com.wonjoong.android.sopthub.ui.home.githubinfo.adapter.FollowerAdapter
-import com.wonjoong.android.sopthub.ui.home.githubinfo.adapter.RepositoryAdapter
+import com.wonjoong.android.sopthub.ui.home.githubinfo.adapter.GithubAdapter
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.toast
 
@@ -21,8 +19,8 @@ class GithubFragment :
 
     private lateinit var fragmentType: String
     private val viewModel: GithubViewModel by viewModels()
-    private lateinit var followerAdapter: FollowerAdapter
-    private lateinit var repositoryAdapter: RepositoryAdapter
+    private lateinit var followerAdapter: GithubAdapter
+    private lateinit var repositoryAdapter: GithubAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setViewModel()
@@ -38,8 +36,8 @@ class GithubFragment :
     }
 
     private fun setFragmentWithFragmentType() {
-        followerAdapter = FollowerAdapter(this::moveToPersonDetail)
-        repositoryAdapter = RepositoryAdapter(this::moveToPersonDetail)
+        followerAdapter = GithubAdapter(this::moveToPersonDetail)
+        repositoryAdapter = GithubAdapter(this::moveToPersonDetail)
         when (fragmentType) {
             FOLLOWER -> {
                 val linearlayoutManager = LinearLayoutManager(requireContext())
