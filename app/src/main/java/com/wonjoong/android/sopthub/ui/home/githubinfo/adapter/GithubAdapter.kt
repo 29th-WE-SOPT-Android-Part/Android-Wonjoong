@@ -3,6 +3,8 @@ package com.wonjoong.android.sopthub.ui.home.githubinfo.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ItemGithubBinding
@@ -10,7 +12,17 @@ import com.wonjoong.android.sopthub.ui.home.githubinfo.data.GithubData
 
 class GithubAdapter(
     private val onClick: ((String, String) -> Unit)?
-) : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {
+) : ListAdapter<GithubData, GithubAdapter.GithubViewHolder>(
+    object : DiffUtil.ItemCallback<GithubData>() {
+        override fun areItemsTheSame(oldItem: GithubData, newItem: GithubData): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: GithubData, newItem: GithubData): Boolean {
+            return oldItem == newItem
+        }
+    }
+) {
     private val itemList = mutableListOf<GithubData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
@@ -31,12 +43,10 @@ class GithubAdapter(
     fun setItemList(newItemList: List<GithubData>) {
         itemList.clear()
         itemList.addAll(newItemList)
-        notifyDataSetChanged() // TODO diff util로 개선
     }
 
     fun removeItemAt(position: Int) {
         itemList.removeAt(position)
-        notifyDataSetChanged() // TODO diff util로 개선
     }
 
     inner class GithubViewHolder(
