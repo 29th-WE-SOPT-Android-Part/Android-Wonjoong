@@ -32,14 +32,10 @@ class GithubViewModel(
     }
 
     private fun getRepositoryList() {
-        _repositoryList.value?.addAll(
-            listOf(
-                GithubData("안드로이드 과제", "재밌따."),
-                GithubData("ios 과제", "재밌어.".repeat(20)),
-                GithubData("솝트 과제", "재밌군."),
-                GithubData("디자인 과제", "재밌네."),
-            )
-        )
-        _repositoryList.notifyObserver()
+        viewModelScope.launch(Dispatchers.IO) {
+            val githubRepositoryList = githubRepository.getRepositoryList()
+            _repositoryList.value?.addAll(githubRepositoryList)
+            _repositoryList.notifyObserver()
+        }
     }
 }

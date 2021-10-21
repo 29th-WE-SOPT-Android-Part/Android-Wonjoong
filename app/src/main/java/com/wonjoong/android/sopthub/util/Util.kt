@@ -9,5 +9,5 @@ fun Context.toast(toastMessage: String) {
 }
 
 fun <T> MutableLiveData<T>.notifyObserver() {
-    this.value = this.value
+    this.postValue(this.value)
 }
