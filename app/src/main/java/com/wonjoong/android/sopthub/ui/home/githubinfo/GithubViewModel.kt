@@ -3,11 +3,16 @@ package com.wonjoong.android.sopthub.ui.home.githubinfo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.wonjoong.android.sopthub.R
-import com.wonjoong.android.sopthub.ui.home.githubinfo.data.GithubData
+import androidx.lifecycle.viewModelScope
 import com.wonjoong.android.sopthub.util.notifyObserver
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kr.wonjoong.data.model.GithubData
+import kr.wonjoong.data.source.GithubRepository
 
-class GithubViewModel : ViewModel() {
+class GithubViewModel(
+    private val githubRepository: GithubRepository
+) : ViewModel() {
     private val _followerList = MutableLiveData<MutableList<GithubData>>(mutableListOf())
     val followerList: LiveData<MutableList<GithubData>> get() = _followerList
     private val _repositoryList = MutableLiveData<MutableList<GithubData>>(mutableListOf())
@@ -19,47 +24,11 @@ class GithubViewModel : ViewModel() {
     }
 
     private fun getFollowerList() {
-        _followerList.value?.addAll(
-            listOf(
-                GithubData(
-                    "문다빈",
-                    "안드로이드의 어머니",
-                    R.drawable.ic_launcher_background,
-                    true
-                ),
-                GithubData(
-                    "문빈",
-                    "안드로이드의 어니",
-                    R.drawable.ic_launcher_background,
-                    true
-                ),
-                GithubData(
-                    "다빈",
-                    "안드로이드의 어머",
-                    R.drawable.ic_launcher_background,
-                    true
-                ),
-                GithubData(
-                    "빈",
-                    "ios의 어머니",
-                    R.drawable.ic_launcher_background,
-                    true
-                ),
-                GithubData(
-                    "빈",
-                    "ios의 어머니",
-                    R.drawable.ic_launcher_background,
-                    true
-                ),
-                GithubData(
-                    "빈",
-                    "ios의 어머니",
-                    R.drawable.ic_launcher_background,
-                    true
-                )
-            )
-        )
-        _followerList.notifyObserver()
+        viewModelScope.launch(Dispatchers.IO) {
+            val githubProfileList = githubRepository.getFollowerList()
+            _followerList.value?.addAll(githubProfileList)
+            _followerList.notifyObserver()
+        }
     }
 
     private fun getRepositoryList() {

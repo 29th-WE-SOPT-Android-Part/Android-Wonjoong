@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ItemGithubBinding
-import com.wonjoong.android.sopthub.ui.home.githubinfo.data.GithubData
+import kr.wonjoong.data.model.GithubData
 
 class GithubAdapter(
     private val onClick: ((String, String) -> Unit)?
