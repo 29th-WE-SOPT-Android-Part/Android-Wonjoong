@@ -1,36 +1,22 @@
 package com.wonjoong.android.sopthub.ui.home.githubinfo.adapter
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ItemGithubBinding
+import com.wonjoong.android.sopthub.util.binding
 import kr.wonjoong.data.model.GithubData
 
 class GithubAdapter(
     private val onClick: ((String, String) -> Unit)?
-) : ListAdapter<GithubData, GithubAdapter.GithubViewHolder>(
-    object : DiffUtil.ItemCallback<GithubData>() {
-        override fun areItemsTheSame(oldItem: GithubData, newItem: GithubData): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(oldItem: GithubData, newItem: GithubData): Boolean {
-            return oldItem == newItem
-        }
-    }
-) {
+) : ListAdapter<GithubData, GithubAdapter.GithubViewHolder>(DIFF_CALLBACK) {
     private val itemList = mutableListOf<GithubData>()
     private lateinit var cachedItem: Pair<Int, GithubData> // position과 item data
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: ItemGithubBinding =
-            DataBindingUtil.inflate(layoutInflater, R.layout.item_github, parent, false)
-        return GithubViewHolder(binding)
+        return GithubViewHolder(parent.binding(R.layout.item_github))
     }
 
     override fun onBindViewHolder(holder: GithubViewHolder, position: Int) {
@@ -72,6 +58,18 @@ class GithubAdapter(
 
         fun bind(githubData: GithubData) {
             binding.data = githubData
+        }
+    }
+
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GithubData>() {
+            override fun areItemsTheSame(oldItem: GithubData, newItem: GithubData): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: GithubData, newItem: GithubData): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 }
