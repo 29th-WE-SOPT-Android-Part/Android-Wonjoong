@@ -123,15 +123,15 @@ class GithubFragment :
     }
 
     private fun View.showSnackBar(message: String, swipedPosition: Int) {
-        val snackBar = Snackbar.make(this, message, Snackbar.LENGTH_SHORT)
-        snackBar.setAction("되돌리기") {
-            mAdapter.revertRemovedCacheItem()
-            mAdapter.notifyItemInserted(swipedPosition)
-            if (swipedPosition == 0) {
-                binding.rvGithubInfo.smoothScrollToPosition(0)
+        Snackbar.make(this, message, Snackbar.LENGTH_SHORT).apply {
+            setAction("되돌리기") {
+                mAdapter.revertRemovedCacheItem()
+                mAdapter.notifyItemInserted(swipedPosition)
+                if (swipedPosition == 0) binding.rvGithubInfo.smoothScrollToPosition(0)
+                dismiss()
             }
-            snackBar.dismiss()
+            setActionTextColor(ContextCompat.getColor(requireContext(), R.color.sopt_pink))
+            show()
         }
-        snackBar.show()
     }
 }
