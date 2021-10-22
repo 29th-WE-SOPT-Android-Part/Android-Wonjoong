@@ -31,7 +31,7 @@
             android:layout_marginHorizontal="132dp"
             android:layout_marginTop="16dp"
             android:contentDescription="@string/wonjoong_profile_picture"
-            android:src="@drawable/ic_launcher_foreground"
+            android:src="@drawable/ic_launcher_background"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
