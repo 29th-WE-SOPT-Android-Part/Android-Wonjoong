@@ -24,6 +24,7 @@ class GithubAdapter(
     }
 ) {
     private val itemList = mutableListOf<GithubData>()
+    private lateinit var cachedItem: Pair<Int, GithubData> // position과 item data
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -47,6 +48,14 @@ class GithubAdapter(
 
     fun removeItemAt(position: Int) {
         itemList.removeAt(position)
+    }
+
+    fun setCachedItem(newCachedItemPosition: Int) {
+        cachedItem = Pair(newCachedItemPosition, itemList[newCachedItemPosition])
+    }
+
+    fun revertRemovedCacheItem() {
+        itemList.add(cachedItem.first, cachedItem.second)
     }
 
     inner class GithubViewHolder(

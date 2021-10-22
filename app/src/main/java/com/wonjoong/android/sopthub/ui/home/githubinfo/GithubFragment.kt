@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.FragmentGithubInfoBinding
 import com.wonjoong.android.sopthub.ui.detail.ItemDetailActivity
@@ -30,6 +31,7 @@ class GithubFragment :
     private val viewModel: GithubViewModel by viewModels { GithubViewModelFactory(githubRepository) }
     private lateinit var followerAdapter: GithubAdapter
     private lateinit var repositoryAdapter: GithubAdapter
+    private lateinit var mAdapter: GithubAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setViewModel()
@@ -63,9 +65,9 @@ class GithubFragment :
         layoutManager: RecyclerView.LayoutManager,
         fragmentType: GithubFragmentType
     ) {
-        val mAdapter =
+        mAdapter =
             if (fragmentType == GithubFragmentType.Follower) followerAdapter else repositoryAdapter
-        val itemTouchHelper = getItemSwipeHelper(mAdapter)
+        val itemTouchHelper = getItemSwipeHelper()
         val customItemDecoration = GithubRecyclerViewItemDecoration(
             20,
             ContextCompat.getColor(requireContext(), R.color.sopt_pink),
@@ -80,19 +82,22 @@ class GithubFragment :
         }
     }
 
-    private fun getItemSwipeHelper(adapter: GithubAdapter): ItemTouchHelper {
+    private fun getItemSwipeHelper(): ItemTouchHelper {
         val itemSwipeCallback = object : SimpleCallback(0, RIGHT or LEFT) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                return false // 시간되면 구현
+                return false
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                adapter.removeItemAt(viewHolder.adapterPosition)
-                adapter.notifyItemRemoved(viewHolder.adapterPosition)
+                val swipedPosition = viewHolder.adapterPosition
+                mAdapter.setCachedItem(swipedPosition)
+                mAdapter.removeItemAt(swipedPosition)
+                mAdapter.notifyItemRemoved(swipedPosition)
+                binding.root.showSnackBar("삭제되었습니다.", swipedPosition)
             }
         }
         return ItemTouchHelper(itemSwipeCallback)
@@ -115,5 +120,18 @@ class GithubFragment :
         viewModel.repositoryList.observe(viewLifecycleOwner) { newRepositoryList ->
             repositoryAdapter.setItemList(newRepositoryList)
         }
+    }
+
+    private fun View.showSnackBar(message: String, swipedPosition: Int) {
+        val snackBar = Snackbar.make(this, message, Snackbar.LENGTH_SHORT)
+        snackBar.setAction("되돌리기") {
+            mAdapter.revertRemovedCacheItem()
+            mAdapter.notifyItemInserted(swipedPosition)
+            if (swipedPosition == 0) {
+                binding.rvGithubInfo.smoothScrollToPosition(0)
+            }
+            snackBar.dismiss()
+        }
+        snackBar.show()
     }
 }
