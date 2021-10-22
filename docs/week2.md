@@ -11,7 +11,7 @@
 ## 구동영상
 |프래그먼트 전환|아이템 클릭|아이템 삭제|
 |:---:|:---:|:---:|
-| https://user-images.githubusercontent.com/57510192/138455351-2feb8d17-bae0-4c53-ac9f-c8136c01dd91.mp4 | https://user-images.githubusercontent.com/57510192/138455291-d6bc6e5e-8901-47aa-94db-ece120dbef83.mp4 | https://user-images.githubusercontent.com/57510192/138455295-b2160fe0-5c83-4d66-b616-2e1d5fd590d1.mp4 |
+| ![fragmentchange](https://user-images.githubusercontent.com/57510192/138457212-4b6b04dd-3648-412e-a834-67210f9b6647.gif) | ![itemclick](https://user-images.githubusercontent.com/57510192/138457458-3836772c-700d-4c57-823b-3f849e1e6fec.gif) | ![itemdelete](https://user-images.githubusercontent.com/57510192/138457462-90aa89df-c532-4b12-a277-a5bf36078f33.gif) |
 
 ## 구현방법
 
