@@ -28,9 +28,9 @@ class GithubFragment(
 
     private val githubRepository = GithubRepository(GithubLocalDataSource())
     private val viewModel: GithubViewModel by viewModels { GithubViewModelFactory(githubRepository) }
-    private lateinit var followerAdapter: GithubAdapter
-    private lateinit var repositoryAdapter: GithubAdapter
-    private lateinit var mAdapter: GithubAdapter
+    private val followerAdapter = GithubAdapter(this::moveToPersonDetail)
+    private val repositoryAdapter = GithubAdapter(null)
+    private lateinit var currentAdapter: GithubAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setViewModel()
@@ -44,8 +44,6 @@ class GithubFragment(
     }
 
     private fun setFragmentWithFragmentType() {
-        followerAdapter = GithubAdapter(this::moveToPersonDetail)
-        repositoryAdapter = GithubAdapter(null) // 클릭이 되지 않도록 null을 넣어준다
         when (fragmentType) {
             GithubFragmentType.FOLLOWER -> {
                 val linearlayoutManager = LinearLayoutManager(requireContext())
@@ -62,7 +60,7 @@ class GithubFragment(
         layoutManager: RecyclerView.LayoutManager,
         fragmentType: GithubFragmentType
     ) {
-        mAdapter =
+        currentAdapter =
             if (fragmentType == GithubFragmentType.FOLLOWER) followerAdapter else repositoryAdapter
         val itemTouchHelper = getItemSwipeHelper()
         val customItemDecoration = GithubRecyclerViewItemDecoration(
@@ -74,7 +72,7 @@ class GithubFragment(
         with(binding.rvGithubInfo) {
             addItemDecoration(customItemDecoration)
             this.layoutManager = layoutManager
-            adapter = mAdapter
+            adapter = currentAdapter
             itemTouchHelper.attachToRecyclerView(this)
         }
     }
@@ -91,9 +89,11 @@ class GithubFragment(
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val swipedPosition = viewHolder.adapterPosition
-                mAdapter.setCachedItem(swipedPosition)
-                mAdapter.removeItemAt(swipedPosition)
-                mAdapter.notifyItemRemoved(swipedPosition)
+                with(currentAdapter) {
+                    setCachedItem(swipedPosition)
+                    removeItemAt(swipedPosition)
+                    notifyItemRemoved(swipedPosition)
+                }
                 binding.root.showSnackBar("삭제되었습니다.", swipedPosition)
             }
         }
@@ -122,8 +122,8 @@ class GithubFragment(
     private fun View.showSnackBar(message: String, swipedPosition: Int) {
         Snackbar.make(this, message, Snackbar.LENGTH_SHORT).apply {
             setAction("되돌리기") {
-                mAdapter.revertRemovedCacheItem()
-                mAdapter.notifyItemInserted(swipedPosition)
+                currentAdapter.revertRemovedCacheItem()
+                currentAdapter.notifyItemInserted(swipedPosition)
                 if (swipedPosition == 0) binding.rvGithubInfo.smoothScrollToPosition(0)
                 dismiss()
             }
