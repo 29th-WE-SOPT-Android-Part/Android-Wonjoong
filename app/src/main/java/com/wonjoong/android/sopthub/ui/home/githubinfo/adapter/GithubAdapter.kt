@@ -69,7 +69,7 @@ class GithubAdapter(
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GithubData>() {
             override fun areItemsTheSame(oldItem: GithubData, newItem: GithubData): Boolean {
-                return oldItem == newItem
+                return oldItem === newItem
             }
 
             override fun areContentsTheSame(oldItem: GithubData, newItem: GithubData): Boolean {
