@@ -7,4 +7,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SoptHub"
 include(":app")
-include(":Data")
+include(":data")
