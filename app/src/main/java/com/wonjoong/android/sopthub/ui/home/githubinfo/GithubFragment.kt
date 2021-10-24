@@ -22,12 +22,13 @@ import com.wonjoong.android.sopthub.ui.home.githubinfo.adapter.GithubAdapter
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.GithubRecyclerViewItemDecoration
 import kr.wonjoong.data.source.GithubRepository
+import kr.wonjoong.data.source.local.GithubLocalDataSource
 
 class GithubFragment :
     BaseViewUtil.BaseFragment<FragmentGithubInfoBinding>(R.layout.fragment_github_info) {
 
     private lateinit var fragmentType: String
-    private val githubRepository = GithubRepository()
+    private val githubRepository = GithubRepository(GithubLocalDataSource())
     private val viewModel: GithubViewModel by viewModels { GithubViewModelFactory(githubRepository) }
     private lateinit var followerAdapter: GithubAdapter
     private lateinit var repositoryAdapter: GithubAdapter
