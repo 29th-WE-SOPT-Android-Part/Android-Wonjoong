@@ -16,10 +16,10 @@ class HomeViewModel : ViewModel() {
     val selectedFragment: LiveData<GithubFragmentType> get() = _selectedFragment
 
     fun setSelectedFragmentAsFollower() {
-        _selectedFragment.value = GithubFragmentType.Follower
+        _selectedFragment.value = GithubFragmentType.FOLLOWER
     }
 
     fun setSelectedFragmentAsRepository() {
-        _selectedFragment.value = GithubFragmentType.Repository
+        _selectedFragment.value = GithubFragmentType.REPOSITORY
     }
 }

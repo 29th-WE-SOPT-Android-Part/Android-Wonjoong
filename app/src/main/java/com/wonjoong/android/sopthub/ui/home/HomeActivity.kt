@@ -43,8 +43,8 @@ class HomeActivity :
     private fun observeSelectedFragmentValue() {
         viewModel.selectedFragment.observe(this) { newSelectedFragmentType ->
             when (newSelectedFragmentType) {
-                GithubFragmentType.Follower -> setFragmentWith(followerFragment)
-                GithubFragmentType.Repository -> setFragmentWith(repositoryFragment)
+                GithubFragmentType.FOLLOWER -> setFragmentWith(followerFragment)
+                GithubFragmentType.REPOSITORY -> setFragmentWith(repositoryFragment)
             }
         }
     }

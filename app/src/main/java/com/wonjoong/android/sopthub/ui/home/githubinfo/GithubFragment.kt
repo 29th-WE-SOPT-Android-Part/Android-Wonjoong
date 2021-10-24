@@ -53,11 +53,11 @@ class GithubFragment :
         when (fragmentType) {
             FOLLOWER -> {
                 val linearlayoutManager = LinearLayoutManager(requireContext())
-                setRecyclerView(linearlayoutManager, GithubFragmentType.Follower)
+                setRecyclerView(linearlayoutManager, GithubFragmentType.FOLLOWER)
             }
             REPOSITORY -> {
                 val gridLayoutManager = GridLayoutManager(requireContext(), 3)
-                setRecyclerView(gridLayoutManager, GithubFragmentType.Repository)
+                setRecyclerView(gridLayoutManager, GithubFragmentType.REPOSITORY)
             }
         }
     }
@@ -67,7 +67,7 @@ class GithubFragment :
         fragmentType: GithubFragmentType
     ) {
         mAdapter =
-            if (fragmentType == GithubFragmentType.Follower) followerAdapter else repositoryAdapter
+            if (fragmentType == GithubFragmentType.FOLLOWER) followerAdapter else repositoryAdapter
         val itemTouchHelper = getItemSwipeHelper()
         val customItemDecoration = GithubRecyclerViewItemDecoration(
             20,

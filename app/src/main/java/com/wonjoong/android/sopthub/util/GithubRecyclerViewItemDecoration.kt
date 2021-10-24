@@ -35,7 +35,7 @@ class GithubRecyclerViewItemDecoration(
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
-        if (fragmentType == GithubFragmentType.Follower) {
+        if (fragmentType == GithubFragmentType.FOLLOWER) {
             val paint = Paint()
             paint.color = divColor
             val left = parent.paddingStart
