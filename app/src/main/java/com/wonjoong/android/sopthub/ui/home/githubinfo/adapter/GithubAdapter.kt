@@ -16,7 +16,7 @@ class GithubAdapter(
     private lateinit var cachedItem: Pair<Int, GithubData> // position과 item data
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
-        return GithubViewHolder(parent.binding(R.layout.item_github))
+        return GithubViewHolder(parent.binding(R.layout.item_github), onClick)
     }
 
     override fun onBindViewHolder(holder: GithubViewHolder, position: Int) {
@@ -44,19 +44,24 @@ class GithubAdapter(
         itemList.add(cachedItem.first, cachedItem.second)
     }
 
-    inner class GithubViewHolder(
-        private val binding: ItemGithubBinding
+    class GithubViewHolder(
+        private val binding: ItemGithubBinding,
+        private val onClick: ((String, String) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        private lateinit var githubData: GithubData
+
         init {
             if (onClick != null) {
                 binding.root.setOnClickListener {
-                    val currentItem = itemList[adapterPosition]
+                    val currentItem = githubData
                     onClick.invoke(currentItem.name, currentItem.description)
                 }
             }
         }
 
         fun bind(githubData: GithubData) {
+            this.githubData = githubData
             binding.data = githubData
         }
     }
