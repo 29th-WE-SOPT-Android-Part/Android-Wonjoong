@@ -15,19 +15,17 @@ import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.FragmentGithubInfoBinding
 import com.wonjoong.android.sopthub.ui.detail.ItemDetailActivity
 import com.wonjoong.android.sopthub.ui.home.GithubFragmentType
-import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.FOLLOWER
-import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.FRAGMENT_TYPE
-import com.wonjoong.android.sopthub.ui.home.HomeActivity.Companion.REPOSITORY
 import com.wonjoong.android.sopthub.ui.home.githubinfo.adapter.GithubAdapter
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.GithubRecyclerViewItemDecoration
 import kr.wonjoong.data.source.GithubRepository
 import kr.wonjoong.data.source.local.GithubLocalDataSource
 
-class GithubFragment :
+class GithubFragment(
+    private val fragmentType: GithubFragmentType
+) :
     BaseViewUtil.BaseFragment<FragmentGithubInfoBinding>(R.layout.fragment_github_info) {
 
-    private lateinit var fragmentType: String
     private val githubRepository = GithubRepository(GithubLocalDataSource())
     private val viewModel: GithubViewModel by viewModels { GithubViewModelFactory(githubRepository) }
     private lateinit var followerAdapter: GithubAdapter
@@ -36,8 +34,6 @@ class GithubFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setViewModel()
-        fragmentType = arguments?.getString(FRAGMENT_TYPE)
-            ?: throw IllegalArgumentException("Please check argument again")
         setFragmentWithFragmentType()
         observeRecyclerViewItem()
     }
@@ -51,11 +47,11 @@ class GithubFragment :
         followerAdapter = GithubAdapter(this::moveToPersonDetail)
         repositoryAdapter = GithubAdapter(null) // 클릭이 되지 않도록 null을 넣어준다
         when (fragmentType) {
-            FOLLOWER -> {
+            GithubFragmentType.FOLLOWER -> {
                 val linearlayoutManager = LinearLayoutManager(requireContext())
                 setRecyclerView(linearlayoutManager, GithubFragmentType.FOLLOWER)
             }
-            REPOSITORY -> {
+            GithubFragmentType.REPOSITORY -> {
                 val gridLayoutManager = GridLayoutManager(requireContext(), 3)
                 setRecyclerView(gridLayoutManager, GithubFragmentType.REPOSITORY)
             }
