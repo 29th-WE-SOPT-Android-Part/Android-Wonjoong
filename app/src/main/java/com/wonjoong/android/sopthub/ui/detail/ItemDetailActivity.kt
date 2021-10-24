@@ -10,10 +10,10 @@ class ItemDetailActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setIntentData()
+        setViewWithIntentData()
     }
 
-    private fun setIntentData() {
+    private fun setViewWithIntentData() {
         val bundle = intent.extras
         if (bundle != null) {
             val name = bundle.getString("name") ?: ""
