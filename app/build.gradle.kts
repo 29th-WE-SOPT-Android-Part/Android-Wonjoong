@@ -43,6 +43,7 @@ android {
 dependencies {
     implementation(Libs.appcompat)
     implementation(Libs.kotlin)
+    implementation(Libs.glide)
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.appcompat)
     implementation(Dep.AndroidX.material)
@@ -56,4 +57,5 @@ dependencies {
     testImplementation(Dep.Test.jUnit)
     androidTestImplementation(Dep.Test.ext)
     androidTestImplementation(Dep.Test.espresso)
+    annotationProcessor(Libs.annotationGlide)
 }

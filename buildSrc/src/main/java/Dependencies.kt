@@ -41,5 +41,7 @@ object Dep {
 object Libs {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+    const val glide = "com.github.bumptech.glide:glide:4.12.0"
+    const val annotationGlide = "com.github.bumptech.glide:compiler:4.12.0"
 }
 
