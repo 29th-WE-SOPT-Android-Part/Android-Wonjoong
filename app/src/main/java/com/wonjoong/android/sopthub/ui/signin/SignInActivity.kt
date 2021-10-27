@@ -9,7 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ActivitySignInBinding
-import com.wonjoong.android.sopthub.ui.home.HomeActivity
+import com.wonjoong.android.sopthub.ui.main.MainActivity
 import com.wonjoong.android.sopthub.ui.signup.SignUpActivity
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.toast
@@ -65,7 +65,7 @@ class SignInActivity :
         btnLogin.setOnClickListener {
             if (etId.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
                 toast(String.format(resources.getString(R.string.welcome_id), etId.text))
-                val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+                val intent = Intent(this@SignInActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {

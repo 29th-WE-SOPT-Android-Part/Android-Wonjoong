@@ -50,6 +50,8 @@ dependencies {
     implementation(Dep.AndroidX.activityKtx)
     implementation(Dep.AndroidX.fragmentKtx)
     implementation(Dep.AndroidX.liveDataKtx)
+    implementation(Dep.AndroidX.navigationFragmentKtx)
+    implementation(Dep.AndroidX.navigationUiKtx)
     implementation(project(mapOf("path" to ":data")))
     testImplementation(Dep.Test.jUnit)
     androidTestImplementation(Dep.Test.ext)
