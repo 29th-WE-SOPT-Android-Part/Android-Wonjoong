@@ -55,7 +55,7 @@ class SignInActivity :
     }
 
     private fun initRegisterBtn() {
-        binding.btnRegister.setOnClickListener {
+        binding.tvRegister.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             getResultText.launch(intent)
         }

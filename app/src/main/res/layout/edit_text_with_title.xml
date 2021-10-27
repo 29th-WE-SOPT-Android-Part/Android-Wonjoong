@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:paddingHorizontal="8dp"
-            android:background="@drawable/shape_round_edit_text"
+            android:background="@drawable/selector_register"
             android:paddingVertical="8dp"
             app:layout_constraintEnd_toEndOf="@id/tv_title"
             app:layout_constraintStart_toStartOf="@id/tv_title"

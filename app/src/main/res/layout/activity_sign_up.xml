@@ -16,60 +16,51 @@
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/tv_sopt_hub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="@string/sopthub"
-            android:textColor="@color/sopt_pink"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
             android:text="@string/register"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_sopt_hub"
-            app:layout_constraintStart_toStartOf="@id/tv_sopt_hub"
-            app:layout_constraintTop_toBottomOf="@id/tv_sopt_hub" />
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.wonjoong.android.sopthub.ui.customview.EditTextWithTitle
             android:id="@+id/et_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
-            android:layout_marginTop="36dp"
             app:hint="이름을 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@id/et_id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_login"
+            app:layout_constraintVertical_chainStyle="packed"
             app:title="이름" />
 
         <com.wonjoong.android.sopthub.ui.customview.EditTextWithTitle
             android:id="@+id/et_id"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            app:hint="아이디를 입력해주세요"
+            android:layout_marginTop="32dp"
+            app:hint="깃허브 아이디를 입력해주세요"
+            app:layout_constraintBottom_toTopOf="@id/et_password"
             app:layout_constraintEnd_toEndOf="@id/et_name"
             app:layout_constraintStart_toStartOf="@id/et_name"
             app:layout_constraintTop_toBottomOf="@id/et_name"
-            app:title="아이디" />
+            app:title="깃허브 아이디" />
 
         <com.wonjoong.android.sopthub.ui.customview.EditTextWithTitle
             android:id="@+id/et_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="32dp"
             app:hint="비밀번호를 입력해주세요"
             app:isPassword="true"
+            app:layout_constraintBottom_toTopOf="@id/btn_done_register"
             app:layout_constraintEnd_toEndOf="@id/et_name"
             app:layout_constraintStart_toStartOf="@id/et_name"
             app:layout_constraintTop_toBottomOf="@id/et_id"
@@ -79,7 +70,7 @@
             android:id="@+id/btn_done_register"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="74dp"
             android:backgroundTint="@color/sopt_pink"
             android:paddingVertical="20dp"
             android:text="@string/done_register"

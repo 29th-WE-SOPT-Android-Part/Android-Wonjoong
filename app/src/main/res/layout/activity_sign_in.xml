@@ -17,30 +17,15 @@
         android:background="@color/white"
         tools:context=".ui.signin.SignInActivity">
 
-        <TextView
-            android:id="@+id/tv_sopt_hub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="@string/sopthub"
-            android:textColor="@color/sopt_pink"
-            android:textSize="32sp"
-            android:textStyle="bold"
+        <ImageView
+            android:id="@+id/iv_github_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/githubimage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/login"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_sopt_hub"
-            app:layout_constraintStart_toStartOf="@id/tv_sopt_hub"
-            app:layout_constraintTop_toBottomOf="@id/tv_sopt_hub" />
 
         <com.wonjoong.android.sopthub.ui.customview.EditTextWithTitle
             android:id="@+id/et_id"
@@ -48,11 +33,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
             android:layout_marginTop="36dp"
-            app:hint="아이디를 입력해주세요"
+            app:hint="깃허브 아이디를 입력해주세요"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_login"
-            app:title="아이디" />
+            app:layout_constraintTop_toBottomOf="@id/iv_github_icon"
+            app:title="깃허브 아이디" />
 
         <com.wonjoong.android.sopthub.ui.customview.EditTextWithTitle
             android:id="@+id/et_password"
@@ -70,26 +55,39 @@
             android:id="@+id/btn_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="@color/sopt_pink"
             android:paddingVertical="20dp"
             android:text="@string/login"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/btn_register"
-            app:layout_constraintEnd_toEndOf="@id/btn_register"
-            app:layout_constraintStart_toStartOf="@id/btn_register" />
-
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginBottom="32dp"
-            android:background="@null"
-            android:text="@string/register"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_no_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_no_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="계정이 없으신가요?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_register"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="회원가입"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_no_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_no_account"
+            app:layout_constraintTop_toTopOf="@id/tv_no_account" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
