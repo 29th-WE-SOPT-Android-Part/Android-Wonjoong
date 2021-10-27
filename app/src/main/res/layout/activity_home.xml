@@ -18,7 +18,7 @@
             android:id="@+id/tv_sopt_hub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="24dp"
             android:text="@string/sopthub"
             android:textColor="@color/sopt_pink"
             android:textSize="32sp"
@@ -29,11 +29,11 @@
 
         <ImageView
             android:id="@+id/iv_my_image"
-            bind="@{viewModel.profileImage}"
+            src="@{viewModel.profileImage}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="80dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginHorizontal="132dp"
+            android:layout_marginTop="16dp"
             android:contentDescription="@string/wonjoong_profile_picture"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
             style="@style/ProfileTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="18dp"
             android:text="@string/name"
             app:layout_constraintStart_toStartOf="@id/iv_my_image"
             app:layout_constraintTop_toBottomOf="@id/iv_my_image" />
@@ -104,35 +104,54 @@
             app:layout_constraintTop_toTopOf="@id/tv_category_mbti"
             tools:text="INFP" />
 
-        <ImageView
-            android:id="@+id/iv_github"
-            android:layout_width="@dimen/small_image"
-            android:layout_height="@dimen/small_image"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/githubimage"
-            app:layout_constraintEnd_toEndOf="parent"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_follower"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/sopt_pink"
+            android:onClick="@{()->viewModel.setSelectedFragmentAsFollower()}"
+            android:text="@string/home_follower_list"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@id/guideline_between_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
+            app:layout_constraintTop_toBottomOf="@id/tv_category_mbti" />
 
-        <ScrollView
-            android:id="@+id/sv_introduce"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_between_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_repository_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/sopt_orange"
+            android:onClick="@{()->viewModel.setSelectedFragmentAsRepository()}"
+            android:text="@string/home_repo_list"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_follower"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_between_button"
+            app:layout_constraintTop_toTopOf="@id/btn_follower" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container_github"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_github">
-
-            <TextView
-                android:id="@+id/tv_introduce"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="16dp"
-                android:text="@{viewModel.introduce}" />
-
-        </ScrollView>
-
+            app:layout_constraintTop_toBottomOf="@id/btn_follower" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

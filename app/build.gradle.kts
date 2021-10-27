@@ -49,6 +49,8 @@ dependencies {
     implementation(Dep.AndroidX.constraintLayout)
     implementation(Dep.AndroidX.activityKtx)
     implementation(Dep.AndroidX.fragmentKtx)
+    implementation(Dep.AndroidX.liveDataKtx)
+    implementation(project(mapOf("path" to ":data")))
     testImplementation(Dep.Test.jUnit)
     androidTestImplementation(Dep.Test.ext)
     androidTestImplementation(Dep.Test.espresso)

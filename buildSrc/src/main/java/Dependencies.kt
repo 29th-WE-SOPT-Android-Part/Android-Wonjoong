@@ -23,6 +23,7 @@ object Dep {
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.1"
         const val activityKtx = "androidx.activity:activity-ktx:${Versions.activity}"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+        const val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     }
 
     object Test {
