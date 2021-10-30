@@ -22,4 +22,7 @@
     <string name="home_fragment_github_icon">Github Icon</string>
     <string name="home_fragment_github">Github</string>
     <string name="follow_fragment_in_progress">준비중입니다</string>
+    <string name="camera_fragment_gallery_image">gallery image</string>
+    <string name="camera_fragment_please_submit">사진을 첨부해주세요</string>
+    <string name="camera_fragment_submit">첨부하기</string>
 </resources>
