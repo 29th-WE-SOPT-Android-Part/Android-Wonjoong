@@ -19,4 +19,7 @@
     <string name="menu_profile">프로필</string>
     <string name="menu_home">홈</string>
     <string name="menu_camera">카메라</string>
+    <string name="home_fragment_github_icon">Github Icon</string>
+    <string name="home_fragment_github">Github</string>
+    <string name="follow_fragment_in_progress">준비중입니다</string>
 </resources>
