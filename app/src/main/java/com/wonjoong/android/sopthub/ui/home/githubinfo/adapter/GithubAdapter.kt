@@ -65,7 +65,7 @@ class GithubAdapter(
             this.githubData = githubData
             binding.data = githubData
             Glide.with(binding.ivGithubProfileImage)
-                .load(R.drawable.ic_launcher_background)
+                .load(githubData.imageSrc)
                 .circleCrop()
                 .into(binding.ivGithubProfileImage)
         }
