@@ -16,7 +16,6 @@ class MainActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vpMain.adapter = MainViewPagerAdapter(this)
-        binding.vpMain.requestDisallowInterceptTouchEvent(true)
         binding.vpMain.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 binding.bnvMain.menu.getItem(position).isChecked = true
