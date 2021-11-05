@@ -8,7 +8,6 @@ import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.FragmentProfileBinding
 import com.wonjoong.android.sopthub.ui.home.GithubFragmentType
 import com.wonjoong.android.sopthub.ui.home.githubinfo.GithubFragment
-import com.wonjoong.android.sopthub.ui.home.githubinfo.GithubFragmentFactory
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 
 class ProfileFragment :
@@ -19,10 +18,6 @@ class ProfileFragment :
     private val repositoryFragment = GithubFragment(GithubFragmentType.REPOSITORY)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        requireActivity().supportFragmentManager.fragmentFactory =
-            GithubFragmentFactory(GithubFragmentType.FOLLOWER)
-        super.onCreate(savedInstanceState)
         initViewModel()
         setProfileImage()
         setDefaultFragment()
@@ -31,7 +26,6 @@ class ProfileFragment :
 
     private fun initViewModel() {
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
     }
 
     private fun setProfileImage() = with(binding) {
@@ -47,7 +41,7 @@ class ProfileFragment :
 
     private fun observeSelectedFragmentValue() {
         viewModel.selectedFragment.observe(this) { newSelectedFragmentType ->
-            when (newSelectedFragmentType) {
+            when (newSelectedFragmentType ?: return@observe) {
                 GithubFragmentType.FOLLOWER -> setFragmentWith(followerFragment)
                 GithubFragmentType.REPOSITORY -> setFragmentWith(repositoryFragment)
             }

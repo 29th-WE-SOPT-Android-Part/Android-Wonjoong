@@ -1,5 +1,6 @@
 package com.wonjoong.android.sopthub.ui.main.profile
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,10 +18,12 @@ class ProfileViewModel : ViewModel() {
     val selectedFragment: LiveData<GithubFragmentType> get() = _selectedFragment
 
     fun setSelectedFragmentAsFollower() {
+        Log.e("here2222", "hereasas")
         _selectedFragment.value = GithubFragmentType.FOLLOWER
     }
 
     fun setSelectedFragmentAsRepository() {
+        Log.e("here33333", "hereasas")
         _selectedFragment.value = GithubFragmentType.REPOSITORY
     }
 }
