@@ -2,6 +2,7 @@ package com.wonjoong.android.sopthub.ui.signup
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -21,6 +22,9 @@ class SignUpActivity :
         initViewModel()
         initRootClickEvent()
         initDoneButton()
+        viewModel.name.observe(this) {
+            Log.e("newName", "->$it")
+        }
     }
 
     private fun initViewModel() {

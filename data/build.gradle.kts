@@ -14,6 +14,7 @@ dependencies {
     implementation(Dep.AndroidX.appcompat)
     implementation(Dep.AndroidX.material)
     implementation(Libs.gson)
+    implementation(Libs.gsonConverter)
     implementation(Libs.retrofit2)
     androidTestImplementation(Dep.Test.ext)
     androidTestImplementation(Dep.Test.espresso)

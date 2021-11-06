@@ -4,5 +4,6 @@
         <attr name="title" format="reference|string" />
         <attr name="hint" format="reference|string" />
         <attr name="isPassword" format="reference|boolean" />
+        <attr name="text" format="reference|string" />
     </declare-styleable>
 </resources>
