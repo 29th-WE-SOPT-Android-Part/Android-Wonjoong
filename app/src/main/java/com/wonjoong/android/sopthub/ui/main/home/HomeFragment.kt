@@ -21,12 +21,8 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
     private fun initTabLayout() {
         TabLayoutMediator(binding.tlFollow, binding.vpFollow) { tab, position ->
             when (position) {
-                0 -> {
-                    tab.text = "팔로잉"
-                }
-                else -> {
-                    tab.text = "팔로워"
-                }
+                0 -> tab.text = "팔로잉"
+                else -> tab.text = "팔로워"
             }
         }.attach()
     }

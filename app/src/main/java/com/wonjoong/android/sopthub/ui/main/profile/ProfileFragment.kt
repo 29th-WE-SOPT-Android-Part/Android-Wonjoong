@@ -40,7 +40,7 @@ class ProfileFragment :
     }
 
     private fun observeSelectedFragmentValue() {
-        viewModel.selectedFragment.observe(this) { newSelectedFragmentType ->
+        viewModel.selectedFragment.observe(viewLifecycleOwner) { newSelectedFragmentType ->
             when (newSelectedFragmentType ?: return@observe) {
                 GithubFragmentType.FOLLOWER -> setFragmentWith(followerFragment)
                 GithubFragmentType.REPOSITORY -> setFragmentWith(repositoryFragment)
@@ -49,8 +49,7 @@ class ProfileFragment :
     }
 
     private fun setFragmentWith(fragment: GithubFragment) {
-        requireActivity()
-            .supportFragmentManager
+        childFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container_github, fragment)
             .commit()
