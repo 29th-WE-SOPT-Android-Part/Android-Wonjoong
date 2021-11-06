@@ -43,5 +43,7 @@ object Libs {
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val glide = "com.github.bumptech.glide:glide:4.12.0"
     const val annotationGlide = "com.github.bumptech.glide:compiler:4.12.0"
+    const val retrofit2 = "com.squareup.retrofit2:retrofit:2.9.0"
+    const val gson = "com.google.code.gson:gson:2.8.8"
 }
 
