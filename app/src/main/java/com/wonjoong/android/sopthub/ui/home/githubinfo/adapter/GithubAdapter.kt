@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ItemGithubBinding
 import com.wonjoong.android.sopthub.util.binding
@@ -63,6 +64,10 @@ class GithubAdapter(
         fun bind(githubData: GithubData) {
             this.githubData = githubData
             binding.data = githubData
+            Glide.with(binding.ivGithubProfileImage)
+                .load(githubData.imageSrc)
+                .circleCrop()
+                .into(binding.ivGithubProfileImage)
         }
     }
 

@@ -43,6 +43,7 @@ android {
 dependencies {
     implementation(Libs.appcompat)
     implementation(Libs.kotlin)
+    implementation(Libs.glide)
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.appcompat)
     implementation(Dep.AndroidX.material)
@@ -50,8 +51,11 @@ dependencies {
     implementation(Dep.AndroidX.activityKtx)
     implementation(Dep.AndroidX.fragmentKtx)
     implementation(Dep.AndroidX.liveDataKtx)
+    implementation(Dep.AndroidX.navigationFragmentKtx)
+    implementation(Dep.AndroidX.navigationUiKtx)
     implementation(project(mapOf("path" to ":data")))
     testImplementation(Dep.Test.jUnit)
     androidTestImplementation(Dep.Test.ext)
     androidTestImplementation(Dep.Test.espresso)
+    annotationProcessor(Libs.annotationGlide)
 }

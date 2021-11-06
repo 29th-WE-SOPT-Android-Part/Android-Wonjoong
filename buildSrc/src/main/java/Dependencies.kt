@@ -13,6 +13,7 @@ object Versions {
     const val junit = "4.13.2"
     const val activity = "1.3.1"
     const val fragment = "1.4.0-alpha10"
+    const val navigationVersion = "2.4.0-alpha10"
 }
 
 object Dep {
@@ -24,6 +25,10 @@ object Dep {
         const val activityKtx = "androidx.activity:activity-ktx:${Versions.activity}"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
         const val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+        const val navigationFragmentKtx =
+            "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
+        const val navigationUiKtx =
+            "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
     }
 
     object Test {
@@ -36,5 +41,7 @@ object Dep {
 object Libs {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+    const val glide = "com.github.bumptech.glide:glide:4.12.0"
+    const val annotationGlide = "com.github.bumptech.glide:compiler:4.12.0"
 }
 
