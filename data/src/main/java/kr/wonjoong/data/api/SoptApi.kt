@@ -1,6 +1,7 @@
 package kr.wonjoong.data.api
 
-import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 data class SignInResponse(
@@ -16,11 +17,16 @@ data class SignInResponse(
     )
 }
 
+data class SignInRequestData(
+    val email: String,
+    val name: String,
+    val password: String
+)
+
 interface SoptApi {
+    @Headers("Content-Type: application/json")
     @POST("user/signup")
-    fun signIn(
-        email: String,
-        name: String,
-        password: String
-    ): Call<SignInResponse>
+    suspend fun signIn(
+        @Body body: SignInRequestData
+    ): SignInResponse
 }
