@@ -4,20 +4,20 @@ import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
-data class SignInResponse(
+data class SignUpResponse(
     val status: Int,
     val success: Boolean,
     val message: String,
-    val data: SignInResponseData
+    val data: SignUpResponseData
 ) {
-    data class SignInResponseData(
+    data class SignUpResponseData(
         val id: Int,
         val name: String,
         val email: String
     )
 }
 
-data class SignInRequestData(
+data class SignUpRequestData(
     val email: String,
     val name: String,
     val password: String
@@ -26,7 +26,7 @@ data class SignInRequestData(
 interface SoptApi {
     @Headers("Content-Type: application/json")
     @POST("user/signup")
-    suspend fun signIn(
-        @Body body: SignInRequestData
-    ): SignInResponse
+    suspend fun signUp(
+        @Body body: SignUpRequestData
+    ): SignUpResponse
 }
