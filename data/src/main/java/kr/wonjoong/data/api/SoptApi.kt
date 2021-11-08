@@ -1,12 +1,11 @@
 package kr.wonjoong.data.api
 
+import kr.wonjoong.data.model.ResponseData
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 data class SoptApiResponse(
-    val status: Int,
-    val success: Boolean,
-    val message: String,
+    val responseData: ResponseData,
     val data: SoptApiResponseData
 ) {
     data class SoptApiResponseData(
