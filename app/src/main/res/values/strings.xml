@@ -25,4 +25,5 @@
     <string name="camera_fragment_gallery_image">gallery image</string>
     <string name="camera_fragment_please_submit">사진을 첨부해주세요</string>
     <string name="camera_fragment_submit">첨부하기</string>
+    <string name="Sign_In_Activity_Check_ID_PW_Again">아이디와 비밀번호를 다시 확인해주세요</string>
 </resources>
