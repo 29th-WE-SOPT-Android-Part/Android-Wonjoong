@@ -1,7 +1,6 @@
 package kr.wonjoong.data.api
 
 import retrofit2.http.Body
-import retrofit2.http.Headers
 import retrofit2.http.POST
 
 data class SoptApiResponse(
@@ -29,13 +28,11 @@ data class SignInRequestData(
 )
 
 interface SoptApi {
-    @Headers("Content-Type: application/json")
     @POST("user/signup")
     suspend fun signUp(
         @Body body: SignUpRequestData
     ): SoptApiResponse
 
-    @Headers("Content-Type: application/json")
     @POST("user/login")
     suspend fun signIn(
         @Body body: SignInRequestData

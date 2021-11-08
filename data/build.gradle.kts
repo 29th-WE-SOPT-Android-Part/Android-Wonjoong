@@ -16,6 +16,7 @@ dependencies {
     implementation(Libs.gson)
     implementation(Libs.gsonConverter)
     implementation(Libs.retrofit2)
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
     androidTestImplementation(Dep.Test.ext)
     androidTestImplementation(Dep.Test.espresso)
     testImplementation(Dep.Test.jUnit)
