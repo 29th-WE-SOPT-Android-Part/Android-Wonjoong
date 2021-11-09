@@ -13,7 +13,9 @@ import com.wonjoong.android.sopthub.ui.main.MainActivity
 import com.wonjoong.android.sopthub.ui.signup.SignUpActivity
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
 

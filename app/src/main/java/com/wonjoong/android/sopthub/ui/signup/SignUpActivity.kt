@@ -13,7 +13,9 @@ import com.wonjoong.android.sopthub.ui.signin.SignInActivity.Companion.PASSWORD_
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.showSnackBar
 import com.wonjoong.android.sopthub.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
     private val viewModel: SignUpViewModel by viewModels()

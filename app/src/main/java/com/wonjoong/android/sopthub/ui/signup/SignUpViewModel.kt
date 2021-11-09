@@ -4,20 +4,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kr.wonjoong.data.api.SignUpRequestData
 import kr.wonjoong.data.api.SoptApi
-import kr.wonjoong.data.source.remote.NetworkType
-import kr.wonjoong.data.source.remote.RetrofitModule
+import javax.inject.Inject
 
-class SignUpViewModel : ViewModel() {
+@HiltViewModel
+class SignUpViewModel @Inject constructor(
+    private val soptApi: SoptApi
+) : ViewModel() {
     private val _name = MutableLiveData("")
     val name: LiveData<String> get() = _name
     private val _isRegisterSuccess = MutableLiveData<Boolean>()
     val isRegisterSuccess: LiveData<Boolean> get() = _isRegisterSuccess
 
     fun signUp(email: String, name: String, password: String) {
-        val soptApi = RetrofitModule().createApi(SoptApi::class, NetworkType.SOPT)
         viewModelScope.launch {
             kotlin.runCatching {
                 soptApi.signUp(SignUpRequestData(email, name, password))

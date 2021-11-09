@@ -14,6 +14,8 @@ object Versions {
     const val activity = "1.3.1"
     const val fragment = "1.4.0-alpha10"
     const val navigationVersion = "2.4.0-alpha10"
+    const val hilt = "2.38.1"
+    const val hiltViewModel = "1.0.0-alpha03"
 }
 
 object Dep {
@@ -46,5 +48,10 @@ object Libs {
     const val retrofit2 = "com.squareup.retrofit2:retrofit:2.9.0"
     const val gson = "com.google.code.gson:gson:2.8.5"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:2.9.0"
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModel}"
+    const val hiltViewModelCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltViewModel}"
+    const val okhttp3 = "com.squareup.okhttp3:okhttp:4.9.1"
 }
 
