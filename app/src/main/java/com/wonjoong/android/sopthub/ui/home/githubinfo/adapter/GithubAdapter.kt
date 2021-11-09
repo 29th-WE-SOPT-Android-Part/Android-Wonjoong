@@ -1,5 +1,6 @@
 package com.wonjoong.android.sopthub.ui.home.githubinfo.adapter
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -31,6 +32,7 @@ class GithubAdapter(
     fun setItemList(newItemList: List<GithubData>) {
         itemList.clear()
         itemList.addAll(newItemList)
+        notifyDataSetChanged()
     }
 
     fun removeItemAt(position: Int) {
@@ -64,6 +66,7 @@ class GithubAdapter(
         fun bind(githubData: GithubData) {
             this.githubData = githubData
             binding.data = githubData
+            Log.e("imamgeSrc", "-${githubData.imageSrc}")
             Glide.with(binding.ivGithubProfileImage)
                 .load(githubData.imageSrc)
                 .circleCrop()

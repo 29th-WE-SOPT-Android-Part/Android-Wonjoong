@@ -7,7 +7,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ActivityMainBinding
 import com.wonjoong.android.sopthub.util.BaseViewUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {

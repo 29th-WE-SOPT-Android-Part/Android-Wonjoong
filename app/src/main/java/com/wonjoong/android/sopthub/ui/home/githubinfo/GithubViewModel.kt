@@ -1,20 +1,53 @@
 package com.wonjoong.android.sopthub.ui.home.githubinfo
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import kr.wonjoong.data.api.GithubApi
+import kr.wonjoong.data.api.GithubFollowerResponse
+import kr.wonjoong.data.api.GithubUserFollowerResponse
 import kr.wonjoong.data.model.GithubData
-import kr.wonjoong.data.source.GithubRepository
+import javax.inject.Inject
 
-class GithubViewModel(
-    private val githubRepository: GithubRepository
+@HiltViewModel
+class GithubViewModel @Inject constructor(
+    private val githubApi: GithubApi
 ) : ViewModel() {
-    val followerList: LiveData<List<GithubData>> = liveData {
-        val followerList = githubRepository.getFollowerList()
-        emit(followerList)
+
+    private val _followerList = MutableLiveData<List<GithubData>>()
+    val followerList: LiveData<List<GithubData>> get() = _followerList
+    val repositoryList = emptyList<GithubData>()
+
+    var githubFollowerList = mutableListOf<GithubFollowerResponse>()
+
+    init {
+        getFollowerList()
     }
-    val repositoryList: LiveData<List<GithubData>> = liveData {
-        val repositoryList = githubRepository.getRepositoryList()
-        emit(repositoryList)
+
+    private fun getFollowerList() {
+        viewModelScope.launch {
+            githubFollowerList.addAll(githubApi.getFollowers())
+            val githubList = mutableListOf<GithubData>()
+            val githubUserFollowerResponse = mutableListOf<GithubUserFollowerResponse>()
+            githubFollowerList.forEach {
+                val userFollowerData = githubApi.getUserFollowers(it.id)
+                githubUserFollowerResponse.add(userFollowerData)
+            }
+            githubFollowerList.forEachIndexed { index, data ->
+                val newItem = GithubData(
+                    name = data.id,
+                    description = "follower: ${githubUserFollowerResponse[index].followers} / following: ${githubUserFollowerResponse[index].following}",
+                    imageSrc = data.profileImageUrl,
+                    isImageVisible = true
+                )
+                githubList.add(newItem)
+            }
+            _followerList.value = githubList
+        }
     }
+
+
 }
