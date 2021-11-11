@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kr.wonjoong.data.api.SignUpRequestData
 import kr.wonjoong.data.api.SoptApi
@@ -20,13 +21,13 @@ class SignUpViewModel @Inject constructor(
     val isRegisterSuccess: LiveData<Boolean> get() = _isRegisterSuccess
 
     fun signUp(email: String, name: String, password: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             kotlin.runCatching {
                 soptApi.signUp(SignUpRequestData(email, name, password))
             }.onSuccess {
-                _isRegisterSuccess.value = true
+                _isRegisterSuccess.postValue(true)
             }.onFailure {
-                _isRegisterSuccess.value = false
+                _isRegisterSuccess.postValue(false)
             }
         }
     }

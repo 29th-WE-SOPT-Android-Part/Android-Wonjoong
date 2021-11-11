@@ -1,10 +1,8 @@
 package kr.wonjoong.data.api
 
 import com.google.gson.annotations.SerializedName
-import kr.wonjoong.data.GITHUB_API
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 data class GithubFollowerResponse(
     @SerializedName("login")
@@ -20,13 +18,15 @@ data class GithubUserFollowerResponse(
 
 interface GithubApi {
     @GET("users/WonJoongLee/followers")
-    suspend fun getFollowers(
-        @Query("Authorization") authorizationToken: String = GITHUB_API
-    ): List<GithubFollowerResponse>
+    suspend fun getFollowers(): List<GithubFollowerResponse>
 
     @GET("users/{userId}")
     suspend fun getUserFollowers(
         @Path("userId") userId: String,
-        @Query("Authorization") authorizationToken: String = GITHUB_API
+    ): GithubUserFollowerResponse
+
+    @GET("users/{userId}/repos")
+    suspend fun getRepositories(
+        @Path("userId") userId: String,
     ): GithubUserFollowerResponse
 }
