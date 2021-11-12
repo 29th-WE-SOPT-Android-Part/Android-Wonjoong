@@ -1,6 +1,6 @@
 # Week3
 동영상 길이가 길어서 Github으로 안올라가지는 것 같습니다!
-그래서 (유튜브 링크)[https://youtu.be/jzVyWdOIH50]로 대체합니다!
+그래서 [유튜브 링크](https://youtu.be/jzVyWdOIH50) 로 대체합니다!
 
 ## Overview
 - 서버 통신 구현
