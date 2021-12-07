@@ -33,4 +33,6 @@
     <string name="why_dont_we_start_sopt_hub">SOPTHub를\n시작해볼까요?</string>
     <string name="wonjoong_s_image">WonJoong\'s Image</string>
     <string name="github_image">Github Image</string>
+    <string name="settings">환경설정</string>
+    <string name="auto_login">자동 로그인</string>
 </resources>

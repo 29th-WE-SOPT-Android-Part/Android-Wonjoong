@@ -26,6 +26,7 @@
             android:name=".ui.signin.SignInActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.settings.SettingsActivity" />
         <activity android:name=".ui.signup.SignUpActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.detail.ItemDetailActivity" />
