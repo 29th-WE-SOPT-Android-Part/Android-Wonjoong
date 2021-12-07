@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "AutoLoginData")
 data class AutoLoginData(
     val isAutoLoginState: Boolean,
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0
+    @PrimaryKey
+    val id: Int = 1
 )

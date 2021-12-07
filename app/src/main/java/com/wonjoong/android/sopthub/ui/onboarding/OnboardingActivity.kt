@@ -2,6 +2,7 @@ package com.wonjoong.android.sopthub.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -19,10 +20,12 @@ class OnboardingActivity :
     private val viewModel: OnboardingViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(viewModel.isOnboardingDone()) {
+        if (viewModel.isOnboardingDone()) {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             this.finish()
+        } else {
+            viewModel.initAutoLoginData()
         }
         viewModel.setOnboardingDone()
         setNavHostFragment()

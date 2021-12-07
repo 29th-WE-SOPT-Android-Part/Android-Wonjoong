@@ -23,6 +23,7 @@ class SettingsActivity :
     }
 
     private fun setSwitchCheck() {
-        binding.switchAutoLogin.isChecked = viewModel.getAutoLoginData()
+        //binding.switchAutoLogin.isChecked = viewModel.getAutoLoginData()
+        binding.switchAutoLogin.isChecked = viewModel.isSwitchChecked.value
     }
 }

@@ -14,10 +14,6 @@ class OnboardingViewModel @Inject constructor(
     private val repository: SoptRepository
 ) : ViewModel() {
 
-    init {
-        initAutoLoginData()
-    }
-
     fun isOnboardingDone(): Boolean {
         return sharedPref.getOnBoardingState()
     }
