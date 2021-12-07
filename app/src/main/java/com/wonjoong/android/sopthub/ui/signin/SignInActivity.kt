@@ -66,7 +66,7 @@ class SignInActivity :
     private fun initLoginBtn() = with(binding) {
         btnLogin.setOnClickListener {
             if (etId.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
-                viewModel?.signIn(etId.text, etPassword.text)
+                this@SignInActivity.viewModel.signIn(etId.text, etPassword.text)
             } else {
                 toast(getString(R.string.login_fail))
             }
