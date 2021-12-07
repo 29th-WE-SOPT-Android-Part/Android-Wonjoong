@@ -24,12 +24,19 @@ class SignInActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        checkAutoLogin()
         initViewModel()
         initRootClickEvent()
         setSignUpActivityResult()
         initRegisterBtn()
         initLoginBtn()
         observeSignInSuccessfullyDone()
+    }
+
+    private fun checkAutoLogin() {
+        if (viewModel.isAutoLogin()) {
+            moveToSignInActivity()
+        }
     }
 
     private fun initViewModel() {
@@ -65,28 +72,32 @@ class SignInActivity :
 
     private fun initLoginBtn() = with(binding) {
         btnLogin.setOnClickListener {
-            if (etId.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
-                this@SignInActivity.viewModel.signIn(etId.text, etPassword.text)
-            } else {
-                toast(getString(R.string.login_fail))
-            }
+            moveToSignInActivity()
+//            if (etId.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
+//                this@SignInActivity.viewModel.signIn(etId.text, etPassword.text)
+//            } else {
+//                toast(getString(R.string.login_fail))
+//            }
         }
     }
 
     private fun observeSignInSuccessfullyDone() {
         viewModel.isSignInSuccess.observe(this) { isSuccess ->
-            val intent = Intent(this@SignInActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-//            if (isSuccess) {
-//                toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text))
-//                val intent = Intent(this@SignInActivity, MainActivity::class.java)
-//                startActivity(intent)
-//                finish()
-//            } else {
-//                toast(getString(R.string.Sign_In_Activity_Check_ID_PW_Again))
-//            }
+            if (isSuccess) {
+                toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text))
+                val intent = Intent(this@SignInActivity, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                toast(getString(R.string.Sign_In_Activity_Check_ID_PW_Again))
+            }
         }
+    }
+
+    private fun moveToSignInActivity() {
+        val intent = Intent(this@SignInActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     companion object {
