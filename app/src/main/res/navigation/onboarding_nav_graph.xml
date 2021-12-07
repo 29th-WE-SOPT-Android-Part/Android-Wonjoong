@@ -29,5 +29,11 @@
         android:id="@+id/onboarding3Fragment"
         android:name="com.wonjoong.android.sopthub.ui.onboarding.Onboarding3Fragment"
         android:label="Onboarding3Fragment"
-        tools:layout="@layout/fragment_onboarding_3" />
+        tools:layout="@layout/fragment_onboarding_3">
+        <action
+            android:id="@+id/action_onboarding3Fragment_to_onboarding1Fragment"
+            app:destination="@id/onboarding1Fragment"
+            app:popUpTo="@+id/onboarding1Fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
