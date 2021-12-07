@@ -12,8 +12,8 @@ interface SoptDAO {
     suspend fun insertAutoLoginData(autoLoginData: AutoLoginData)
 
     @Query("UPDATE AutoLoginData SET isAutoLoginState = :autoLoginData WHERE id = 1")
-    suspend fun updateAutoLoginData(autoLoginData: AutoLoginData)
+    suspend fun updateAutoLoginData(autoLoginData: Boolean)
 
     @Query("SELECT * FROM AutoLoginData WHERE id = 1")
-    suspend fun getAutoLoginData(): Boolean
+    suspend fun getAutoLoginData(): AutoLoginData
 }
