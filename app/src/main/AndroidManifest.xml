@@ -3,9 +3,10 @@
     package="com.wonjoong.android.sopthub">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_main_logo"
         android:label="@string/app_name"
@@ -25,9 +26,7 @@
         <activity android:name=".ui.signup.SignUpActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.detail.ItemDetailActivity" />
-        <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="true" />
+        <activity android:name=".ui.main.MainActivity" />
     </application>
 
 </manifest>

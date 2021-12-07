@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("kapt")
 }
@@ -44,6 +45,9 @@ dependencies {
     implementation(Libs.appcompat)
     implementation(Libs.kotlin)
     implementation(Libs.glide)
+    implementation(Libs.hilt)
+    implementation(Libs.hiltViewModel)
+    implementation(Libs.hiltViewModelCompiler)
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.appcompat)
     implementation(Dep.AndroidX.material)
@@ -54,8 +58,10 @@ dependencies {
     implementation(Dep.AndroidX.navigationFragmentKtx)
     implementation(Dep.AndroidX.navigationUiKtx)
     implementation(project(mapOf("path" to ":data")))
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
     testImplementation(Dep.Test.jUnit)
     androidTestImplementation(Dep.Test.ext)
     androidTestImplementation(Dep.Test.espresso)
     annotationProcessor(Libs.annotationGlide)
+    kapt(Libs.hiltCompiler)
 }

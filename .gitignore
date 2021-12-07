@@ -1,4 +1,6 @@
 
+/data/src/main/java/kr/wonjoong/data/SecretKeys.kt
+
 *.iml
 .gradle
 local.properties

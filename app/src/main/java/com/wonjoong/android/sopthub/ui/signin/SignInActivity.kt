@@ -13,11 +13,12 @@ import com.wonjoong.android.sopthub.ui.main.MainActivity
 import com.wonjoong.android.sopthub.ui.signup.SignUpActivity
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
 
-    private val TAG = "SIGN_IN_ACTIVITY"
     private val viewModel: SignInViewModel by viewModels()
     private lateinit var getResultText: ActivityResultLauncher<Intent>
 
@@ -28,6 +29,7 @@ class SignInActivity :
         setSignUpActivityResult()
         initRegisterBtn()
         initLoginBtn()
+        observeSignInSuccessfullyDone()
     }
 
     private fun initViewModel() {
@@ -64,12 +66,22 @@ class SignInActivity :
     private fun initLoginBtn() = with(binding) {
         btnLogin.setOnClickListener {
             if (etId.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
-                toast(String.format(resources.getString(R.string.welcome_id), etId.text))
+                this@SignInActivity.viewModel.signIn(etId.text, etPassword.text)
+            } else {
+                toast(getString(R.string.login_fail))
+            }
+        }
+    }
+
+    private fun observeSignInSuccessfullyDone() {
+        viewModel.isSignInSuccess.observe(this) { isSuccess ->
+            if (isSuccess) {
+                toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text))
                 val intent = Intent(this@SignInActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
-                toast(getString(R.string.login_fail))
+                toast(getString(R.string.Sign_In_Activity_Check_ID_PW_Again))
             }
         }
     }
