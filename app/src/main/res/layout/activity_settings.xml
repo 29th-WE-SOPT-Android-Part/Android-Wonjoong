@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.wonjoong.android.sopthub.ui.settings.SettingsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,10 +45,11 @@
             app:layout_constraintStart_toStartOf="@id/settings"
             app:layout_constraintTop_toBottomOf="@id/view_div_1" />
 
-        <androidx.appcompat.widget.SwitchCompat
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch_auto_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onCheckedChanged="@{()->viewModel.setSwitchChecked()}"
             app:layout_constraintBottom_toBottomOf="@id/tv_auto_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_auto_login" />

@@ -75,14 +75,17 @@ class SignInActivity :
 
     private fun observeSignInSuccessfullyDone() {
         viewModel.isSignInSuccess.observe(this) { isSuccess ->
-            if (isSuccess) {
-                toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text))
-                val intent = Intent(this@SignInActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                toast(getString(R.string.Sign_In_Activity_Check_ID_PW_Again))
-            }
+            val intent = Intent(this@SignInActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+//            if (isSuccess) {
+//                toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text))
+//                val intent = Intent(this@SignInActivity, MainActivity::class.java)
+//                startActivity(intent)
+//                finish()
+//            } else {
+//                toast(getString(R.string.Sign_In_Activity_Check_ID_PW_Again))
+//            }
         }
     }
 
