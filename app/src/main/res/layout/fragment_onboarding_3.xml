@@ -12,9 +12,9 @@
 
         <ImageView
             android:id="@+id/iv_wonjoong_github_image"
-            android:layout_width="88dp"
+            android:layout_width="120dp"
             android:contentDescription="@string/wonjoong_s_image"
-            android:layout_height="88dp"
+            android:layout_height="120dp"
             app:layout_constraintBottom_toTopOf="@id/tv_welcome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

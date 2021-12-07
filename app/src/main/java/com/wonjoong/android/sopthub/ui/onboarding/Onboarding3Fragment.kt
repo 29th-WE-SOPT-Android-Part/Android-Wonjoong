@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.FragmentOnboarding3Binding
 import com.wonjoong.android.sopthub.ui.signin.SignInActivity
@@ -16,6 +17,7 @@ class Onboarding3Fragment :
         super.onViewCreated(view, savedInstanceState)
         initButton()
         initNavigation()
+        setWonJoongImage()
     }
 
     private fun initButton() {
@@ -30,5 +32,13 @@ class Onboarding3Fragment :
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             findNavController().navigate(Onboarding3FragmentDirections.actionOnboarding3FragmentToOnboarding1Fragment())
         }
+    }
+
+    private fun setWonJoongImage() {
+        Glide
+            .with(binding.ivWonjoongGithubImage)
+            .load(R.drawable.wonjoong)
+            .circleCrop()
+            .into(binding.ivWonjoongGithubImage)
     }
 }
