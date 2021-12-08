@@ -9,16 +9,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kr.wonjoong.data.api.SignInRequestData
 import kr.wonjoong.data.api.SoptApi
-import kr.wonjoong.data.sharedpref.SoptHubSharedPreference
+import kr.wonjoong.data.source.local.SoptRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
     private val soptApi: SoptApi,
-    private val sharedPreference: SoptHubSharedPreference
+    //private val sharedPreference: SoptHubSharedPreference,
+    private val repository: SoptRepository
 ) : ViewModel() {
     private val _isSignInSuccess = MutableLiveData<Boolean>()
     val isSignInSuccess: LiveData<Boolean> get() = _isSignInSuccess
+
+    init {
+        isAutoLogin()
+    }
 
     fun signIn(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -32,8 +37,9 @@ class SignInViewModel @Inject constructor(
         }
     }
 
-    fun isAutoLogin(): Boolean {
-        return sharedPreference.getAutoLogin()
+    private fun isAutoLogin() {
+        viewModelScope.launch {
+            if (repository.getAutoLogin()) _isSignInSuccess.value = true
+        }
     }
-
 }

@@ -24,19 +24,12 @@ class SignInActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        checkAutoLogin()
         initViewModel()
         initRootClickEvent()
         setSignUpActivityResult()
         initRegisterBtn()
         initLoginBtn()
         observeSignInSuccessfullyDone()
-    }
-
-    private fun checkAutoLogin() {
-        if (viewModel.isAutoLogin()) {
-            moveToSignInActivity()
-        }
     }
 
     private fun initViewModel() {
@@ -84,7 +77,7 @@ class SignInActivity :
     private fun observeSignInSuccessfullyDone() {
         viewModel.isSignInSuccess.observe(this) { isSuccess ->
             if (isSuccess) {
-                toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text))
+                //toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text))
                 val intent = Intent(this@SignInActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -98,6 +91,10 @@ class SignInActivity :
         val intent = Intent(this@SignInActivity, MainActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    private fun observeAutoLogin() {
+        viewModel.isSignInSuccess
     }
 
     companion object {

@@ -16,11 +16,11 @@ class SoptRepository @Inject constructor(
         soptDAO.insertAutoLoginData(AutoLoginData(false))
     }
 
-    override suspend fun setAutoLogin(isOn: Boolean) {
+    override suspend fun setAutoLogin(isOn: Boolean) = withContext(Dispatchers.IO) {
         soptDAO.updateAutoLoginData(isOn)
     }
 
-    override suspend fun getAutoLogin(): Boolean {
-        return soptDAO.getAutoLoginData().isAutoLoginState
+    override suspend fun getAutoLogin(): Boolean = withContext(Dispatchers.IO) {
+        return@withContext soptDAO.getAutoLoginData().isAutoLoginState
     }
 }
