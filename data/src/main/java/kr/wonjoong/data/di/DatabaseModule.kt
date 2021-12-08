@@ -1,4 +1,4 @@
-package kr.wonjoong.data
+package kr.wonjoong.data.di
 
 import android.content.Context
 import androidx.room.Room
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-class DatabaseModule {
+object DatabaseModule {
     @Provides
     @Singleton
     fun provideSoptDataBase(@ApplicationContext applicationContext: Context): SoptDatabase {
