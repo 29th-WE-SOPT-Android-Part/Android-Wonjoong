@@ -51,7 +51,7 @@ class SoptHubSharedPreference @Inject constructor(@ApplicationContext context: C
 
 ### Util 클래스 코드 및 패키징 방식
 <img src="https://user-images.githubusercontent.com/57510192/145131886-e7eefc35-f762-4571-aa3d-1ca6c3fce27c.PNG" width="300"><br>
-확장함수는 접미사로 Extensions를 붙이고, 상속받아 추가 구현하는 코드는 접미사로 Util을 붙였습니다. 이런것보다 클래스명이나 파일명을 보고 어떤 역할을 하는지 파악할 수 있도록 하기만 하면 되는 것 같습니다.
+확장함수는 접미사로 Extensions를 붙이고, 상속받아 추가 구현하는 코드는 접미사로 Util을 붙였습니다. 이런것보다 클래스명이나 파일명을 보고 어떤 역할을 하는지 파악할 수 있도록 하기만 하면 되는 것 같습니다.<br>
 <img src="https://user-images.githubusercontent.com/57510192/145132181-832ea062-1f74-4cbc-8b5d-430ef543f2c7.PNG" width="300"><br>
 데이터는 외부 모듈로 뺴주었습니다.
 
