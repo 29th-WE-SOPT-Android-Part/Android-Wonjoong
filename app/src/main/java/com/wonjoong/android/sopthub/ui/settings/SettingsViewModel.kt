@@ -1,38 +1,43 @@
 package com.wonjoong.android.sopthub.ui.settings
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kr.wonjoong.data.sharedpref.SoptHubSharedPreference
 import kr.wonjoong.data.source.local.SoptRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    //private val sharedPreference: SoptHubSharedPreference
     private val repository: SoptRepository
 ) : ViewModel() {
 
-    private val _isSwitchChecked = MutableStateFlow(false)
-    val isSwitchChecked = _isSwitchChecked.asStateFlow()
-    private var isAutoLogin = false
+    private val _isSwitchChecked = MutableLiveData<Boolean>()
+    val isSwitchChecked: LiveData<Boolean> get() = _isSwitchChecked
+    private var changedByDBFlag = false // DB값에 의해 켜지면 리스너가 동작하지 않도록 하기 위해 추가된 플래그
 
     init {
-        viewModelScope.launch {
-            isAutoLogin = repository.getAutoLogin()
-            _isSwitchChecked.value = isAutoLogin
-        }
+        getAutoLoginData()
     }
 
     fun setSwitchChecked() {
-        _isSwitchChecked.value = !(_isSwitchChecked.value)
+        if (changedByDBFlag) {
+            changedByDBFlag = false
+            return
+        }
+        _isSwitchChecked.value = !(_isSwitchChecked.value ?: return)
         viewModelScope.launch {
-            repository.setAutoLogin(_isSwitchChecked.value)
+            repository.setAutoLogin(_isSwitchChecked.value ?: return@launch)
+        }
+    }
+
+    private fun getAutoLoginData() {
+        viewModelScope.launch {
+            val isAutoLogin = repository.getAutoLogin()
+            if (isAutoLogin) changedByDBFlag = true
+            _isSwitchChecked.value = isAutoLogin
         }
     }
 }

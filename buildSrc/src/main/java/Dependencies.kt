@@ -17,6 +17,7 @@ object Versions {
     const val navigationVersion = "2.4.0-alpha10"
     const val hilt = "2.38.1"
     const val hiltViewModel = "1.0.0-alpha03"
+    const val lifeCycle = "2.4.0"
 }
 
 object Dep {
@@ -35,6 +36,7 @@ object Dep {
         const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
         const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
         const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+        const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifeCycle}"
     }
 
     object Test {

@@ -58,6 +58,7 @@ dependencies {
     implementation(Dep.AndroidX.liveDataKtx)
     implementation(Dep.AndroidX.navigationFragmentKtx)
     implementation(Dep.AndroidX.navigationUiKtx)
+    implementation(Dep.AndroidX.lifecycleRuntimeKtx)
     implementation(project(mapOf("path" to ":data")))
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
     testImplementation(Dep.Test.jUnit)

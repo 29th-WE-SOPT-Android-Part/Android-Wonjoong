@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.ActivitySettingsBinding
 import com.wonjoong.android.sopthub.util.BaseViewUtil
+import com.wonjoong.android.sopthub.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +24,8 @@ class SettingsActivity :
     }
 
     private fun setSwitchCheck() {
-        //binding.switchAutoLogin.isChecked = viewModel.getAutoLoginData()
-        binding.switchAutoLogin.isChecked = viewModel.isSwitchChecked.value
+        viewModel.isSwitchChecked.observeOnce(this) { newCheckedData ->
+            binding.switchAutoLogin.isChecked = newCheckedData
+        }
     }
 }
