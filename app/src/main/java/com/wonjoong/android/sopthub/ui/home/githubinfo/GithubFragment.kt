@@ -29,7 +29,7 @@ class GithubFragment(
 ) :
     BaseViewUtil.BaseFragment<FragmentGithubInfoBinding>(R.layout.fragment_github_info) {
 
-    private val githubRepository = GithubRepository(GithubLocalDataSource())
+    //private val githubRepository = GithubRepository(GithubLocalDataSource())
     //private val viewModel: GithubViewModel by viewModels { GithubViewModelFactory(githubRepository) }
     private val viewModel: GithubViewModel by viewModels()
     private val followerAdapter = GithubAdapter(this::moveToPersonDetail)
