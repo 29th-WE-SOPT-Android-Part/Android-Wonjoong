@@ -2,7 +2,6 @@ package com.wonjoong.android.sopthub.ui.home.githubinfo
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -20,8 +19,6 @@ import com.wonjoong.android.sopthub.ui.home.githubinfo.adapter.GithubAdapter
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 import com.wonjoong.android.sopthub.util.GithubRecyclerViewItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
-import kr.wonjoong.data.source.GithubRepository
-import kr.wonjoong.data.source.local.GithubLocalDataSource
 
 @AndroidEntryPoint
 class GithubFragment(
@@ -29,8 +26,6 @@ class GithubFragment(
 ) :
     BaseViewUtil.BaseFragment<FragmentGithubInfoBinding>(R.layout.fragment_github_info) {
 
-    //private val githubRepository = GithubRepository(GithubLocalDataSource())
-    //private val viewModel: GithubViewModel by viewModels { GithubViewModelFactory(githubRepository) }
     private val viewModel: GithubViewModel by viewModels()
     private val followerAdapter = GithubAdapter(this::moveToPersonDetail)
     private val repositoryAdapter = GithubAdapter(null)
@@ -116,12 +111,8 @@ class GithubFragment(
 
     private fun observeRecyclerViewItem() {
         viewModel.followerList.observe(viewLifecycleOwner) { newFollowerList ->
-            Log.e("newFollower", "-$newFollowerList")
             followerAdapter.setItemList(newFollowerList)
         }
-//        viewModel.repositoryList.observe(viewLifecycleOwner) { newRepositoryList ->
-//            repositoryAdapter.setItemList(newRepositoryList)
-//        }
     }
 
     private fun View.showSnackBar(message: String, swipedPosition: Int) {

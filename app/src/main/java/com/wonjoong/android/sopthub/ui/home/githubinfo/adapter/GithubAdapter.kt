@@ -66,7 +66,6 @@ class GithubAdapter(
         fun bind(githubData: GithubData) {
             this.githubData = githubData
             binding.data = githubData
-            Log.e("imamgeSrc", "-${githubData.imageSrc}")
             Glide.with(binding.ivGithubProfileImage)
                 .load(githubData.imageSrc)
                 .circleCrop()
