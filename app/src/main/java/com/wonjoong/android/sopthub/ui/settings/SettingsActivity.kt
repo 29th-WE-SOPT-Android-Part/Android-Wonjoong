@@ -14,11 +14,11 @@ class SettingsActivity :
     private val viewModel: SettingsViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initFragment()
+        initActivity()
         setSwitchCheck()
     }
 
-    private fun initFragment() {
+    private fun initActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }

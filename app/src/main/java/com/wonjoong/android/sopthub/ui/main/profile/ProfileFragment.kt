@@ -33,7 +33,7 @@ class ProfileFragment :
 
     private fun initSettingButton() {
         binding.ivSettings.setOnClickListener {
-            val intent = Intent(requireActivity(), SettingsActivity::class.java)
+            val intent = Intent(requireContext(), SettingsActivity::class.java)
             startActivity(intent)
         }
     }
