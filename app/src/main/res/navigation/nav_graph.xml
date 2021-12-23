@@ -20,4 +20,5 @@
         android:name="com.wonjoong.android.sopthub.ui.main.camera.CameraFragment"
         android:label="CameraFragment"
         tools:layout="@layout/fragment_camera" />
+
 </navigation>

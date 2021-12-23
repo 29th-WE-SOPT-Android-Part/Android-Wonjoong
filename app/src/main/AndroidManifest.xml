@@ -14,15 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SoptHub">
         <activity
-            android:name=".ui.signin.SignInActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.signin.SignInActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.settings.SettingsActivity" />
         <activity android:name=".ui.signup.SignUpActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.detail.ItemDetailActivity" />

@@ -1,5 +1,6 @@
 package com.wonjoong.android.sopthub.ui.main.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -8,6 +9,7 @@ import com.wonjoong.android.sopthub.R
 import com.wonjoong.android.sopthub.databinding.FragmentProfileBinding
 import com.wonjoong.android.sopthub.ui.home.GithubFragmentType
 import com.wonjoong.android.sopthub.ui.home.githubinfo.GithubFragment
+import com.wonjoong.android.sopthub.ui.settings.SettingsActivity
 import com.wonjoong.android.sopthub.util.BaseViewUtil
 
 class ProfileFragment :
@@ -19,6 +21,7 @@ class ProfileFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initViewModel()
+        initSettingButton()
         setProfileImage()
         setDefaultFragment()
         observeSelectedFragmentValue()
@@ -26,6 +29,13 @@ class ProfileFragment :
 
     private fun initViewModel() {
         binding.viewModel = viewModel
+    }
+
+    private fun initSettingButton() {
+        binding.ivSettings.setOnClickListener {
+            val intent = Intent(requireContext(), SettingsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setProfileImage() = with(binding) {

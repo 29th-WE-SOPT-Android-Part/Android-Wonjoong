@@ -8,6 +8,9 @@ plugins {
 
 android {
     compileSdk = Apps.compileSdk
+    defaultConfig {
+        minSdk = 21
+    }
 }
 
 dependencies {
@@ -19,8 +22,13 @@ dependencies {
     implementation(Libs.retrofit2)
     implementation(Libs.hilt)
     implementation(Libs.okhttp3)
+    implementation(Dep.AndroidX.roomKtx)
+    implementation("androidx.preference:preference-ktx:1.1.1")
     androidTestImplementation(Dep.Test.ext)
     androidTestImplementation(Dep.Test.espresso)
     testImplementation(Dep.Test.jUnit)
     kapt(Libs.hiltCompiler)
+    kapt(Dep.AndroidX.roomCompiler)
+    api(Dep.AndroidX.roomRuntime)
+    annotationProcessor(Dep.AndroidX.roomCompiler)
 }

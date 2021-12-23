@@ -24,7 +24,7 @@ class GithubViewModel @Inject constructor(
     var githubFollowerList = mutableListOf<GithubFollowerResponse>()
 
     init {
-        getFollowerList()
+        //getFollowerList() // api 요청 너무 많이 해서 일단 뺐음
     }
 
     private fun getFollowerList() {

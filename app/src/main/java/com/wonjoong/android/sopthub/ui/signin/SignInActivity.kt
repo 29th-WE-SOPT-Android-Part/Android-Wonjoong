@@ -65,6 +65,7 @@ class SignInActivity :
 
     private fun initLoginBtn() = with(binding) {
         btnLogin.setOnClickListener {
+            //moveToSignInActivity()
             if (etId.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
                 this@SignInActivity.viewModel.signIn(etId.text, etPassword.text)
             } else {
@@ -76,7 +77,7 @@ class SignInActivity :
     private fun observeSignInSuccessfullyDone() {
         viewModel.isSignInSuccess.observe(this) { isSuccess ->
             if (isSuccess) {
-                toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text))
+                //toast(String.format(resources.getString(R.string.welcome_id), binding.etId.text)) // 자동로그인으로 인해 지움
                 val intent = Intent(this@SignInActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -85,6 +86,12 @@ class SignInActivity :
             }
         }
     }
+
+//    private fun moveToSignInActivity() {
+//        val intent = Intent(this@SignInActivity, MainActivity::class.java)
+//        startActivity(intent)
+//        finish()
+//    }
 
     companion object {
         const val NAME_INTENT_KEY = "name"

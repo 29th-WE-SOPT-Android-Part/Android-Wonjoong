@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav_graph"
+    app:startDestination="@id/onboarding1Fragment">
+
+    <fragment
+        android:id="@+id/onboarding1Fragment"
+        android:name="com.wonjoong.android.sopthub.ui.onboarding.Onboarding1Fragment"
+        android:label="첫 번째 화면"
+        tools:layout="@layout/fragment_onboarding_1">
+        <action
+            android:id="@+id/action_onboarding1Fragment_to_onboarding2Fragment"
+            app:destination="@id/onboarding2Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onboarding2Fragment"
+        android:name="com.wonjoong.android.sopthub.ui.onboarding.Onboarding2Fragment"
+        android:label="두 번째 화면"
+        tools:layout="@layout/fragment_onboarding_2">
+        <action
+            android:id="@+id/action_onboarding2Fragment_to_onboarding3Fragment"
+            app:destination="@id/onboarding3Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onboarding3Fragment"
+        android:name="com.wonjoong.android.sopthub.ui.onboarding.Onboarding3Fragment"
+        android:label="세 번째 화면"
+        tools:layout="@layout/fragment_onboarding_3">
+        <action
+            android:id="@+id/action_onboarding3Fragment_to_onboarding1Fragment"
+            app:destination="@id/onboarding1Fragment"
+            app:popUpTo="@+id/onboarding1Fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

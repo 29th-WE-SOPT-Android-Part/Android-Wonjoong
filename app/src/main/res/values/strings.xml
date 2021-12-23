@@ -26,4 +26,13 @@
     <string name="camera_fragment_please_submit">사진을 첨부해주세요</string>
     <string name="camera_fragment_submit">첨부하기</string>
     <string name="Sign_In_Activity_Check_ID_PW_Again">아이디와 비밀번호를 다시 확인해주세요</string>
+    <string name="welcome">SOPTHub에 오신걸\n환영합니다!</string>
+    <string name="to_next">다음으로</string>
+    <string name="have_a_great_time">SOPTHub에서 즐거운 시간\n보내시길 바랍니다!</string>
+    <string name="lets_start">시작하기</string>
+    <string name="why_dont_we_start_sopt_hub">SOPTHub를\n시작해볼까요?</string>
+    <string name="wonjoong_s_image">WonJoong\'s Image</string>
+    <string name="github_image">Github Image</string>
+    <string name="settings">환경설정</string>
+    <string name="auto_login">자동 로그인</string>
 </resources>

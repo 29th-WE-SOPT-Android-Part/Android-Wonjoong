@@ -18,12 +18,10 @@ class ProfileViewModel : ViewModel() {
     val selectedFragment: LiveData<GithubFragmentType> get() = _selectedFragment
 
     fun setSelectedFragmentAsFollower() {
-        Log.e("here2222", "hereasas")
         _selectedFragment.value = GithubFragmentType.FOLLOWER
     }
 
     fun setSelectedFragmentAsRepository() {
-        Log.e("here33333", "hereasas")
         _selectedFragment.value = GithubFragmentType.REPOSITORY
     }
 }
